@@ -3,12 +3,12 @@ package com.example.donorin;
 public class DataModalForgot {
 
     private String username;
-    private String newpassword;
+    private String new_password;
     private String status;
 
-    public DataModalForgot(String username, String newpassword) {
+    public DataModalForgot(String username, String new_password) {
         this.username = username;
-        this.newpassword = newpassword;
+        this.new_password = new_password;
     }
 
     public String getUsername() {
@@ -20,11 +20,11 @@ public class DataModalForgot {
     }
 
     public String getNewpassword() {
-        return newpassword;
+        return new_password;
     }
 
     public void setNewpassword(String newpassword) {
-        this.newpassword = newpassword;
+        this.new_password = newpassword;
     }
 
     public String getStatus() {

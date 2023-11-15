@@ -17,7 +17,7 @@ import android.os.Bundle;
 
 public class lupapassword extends AppCompatActivity {
 
-    private EditText inputUsername, inputNewPassword;
+    private EditText inputUsername, inputnew_password;
     private Button btnForgot;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class lupapassword extends AppCompatActivity {
         setContentView(R.layout.activity_lupapassword);
 
         inputUsername = findViewById(R.id.inputUsername);
-        inputNewPassword = findViewById(R.id.inputNewPassword);
+        inputnew_password = findViewById(R.id.inputNewPassword);
         btnForgot = findViewById(R.id.btnForgot);
 
         btnForgot.setOnClickListener(new View.OnClickListener() {
@@ -33,18 +33,18 @@ public class lupapassword extends AppCompatActivity {
             public void onClick(View v) {
                 // validating if the text field is empty or not.
                 if (inputUsername.getText().toString().trim().length()==0
-                        || inputNewPassword.getText().toString().trim().length()==0) {
+                        || inputnew_password.getText().toString().trim().length()==0) {
                     Toast.makeText(lupapassword.this, "Mohon lengkapi yang masih kosong", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     postDataForgot(inputUsername.getText().toString(),
-                            inputNewPassword.getText().toString());
+                            inputnew_password.getText().toString());
                 }
             }
         });
     }
 
-    private void postDataForgot(String username, String newpassword) {
+    private void postDataForgot(String username, String new_password) {
 
         // below line is for displaying our progress bar.
 //        loadingPB.setVisibility(View.VISIBLE);
@@ -52,7 +52,7 @@ public class lupapassword extends AppCompatActivity {
         // on below line we are creating a retrofit
         // builder and passing our base url
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://b18f-103-23-244-254.ngrok.io/")
+                .baseUrl("https://514d-125-164-20-20.ngrok-free.app/")
                 // as we are sending data in json format so
                 // we have to add Gson converter factory
                 .addConverterFactory(GsonConverterFactory.create())
@@ -62,7 +62,7 @@ public class lupapassword extends AppCompatActivity {
         RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
 
         // passing data from our text fields to our modal class.
-        DataModalForgot modal = new DataModalForgot(username, newpassword);
+        DataModalForgot modal = new DataModalForgot(username, new_password);
 
         // calling a method to create a post and passing our modal class.
         Call<DataModalForgot> call = retrofitAPI.createPostForgot(modal);
@@ -71,27 +71,21 @@ public class lupapassword extends AppCompatActivity {
         call.enqueue(new Callback<DataModalForgot>() {
             @Override
             public void onResponse(Call<DataModalForgot> call, Response<DataModalForgot> response) {
-                // this method is called when we get response from our api.
-                Toast.makeText(lupapassword.this, "Ganti Password Berhasil", Toast.LENGTH_SHORT).show();
+                if (response.isSuccessful() && response.body() != null) {
+                    DataModalForgot responseFromAPI = response.body();
 
-                // below line is for hiding our progress bar.
-//                loadingPB.setVisibility(View.GONE);
-
-                // on below line we are setting empty text
-                // to our both edit text.
-                inputUsername.setText("");
-                inputNewPassword.setText("");
-
-                // we are getting response from our body
-                // and passing it to our modal class.
-                DataModalForgot responseFromAPI = response.body();
-
-                // on below line we are getting our data from modal class and adding it to our string.
-                String responseString = "Response Code : " + response.code();
-
-                // below line we are setting our
-                // string to our text view.
-//                responseTV.setText(responseString);
+                    // Assuming there is a "status" field in the response indicating success
+                    if (responseFromAPI.getStatus().equals("success")) {
+                        Toast.makeText(lupapassword.this, "Password Berhasil Diubah", Toast.LENGTH_SHORT).show();
+                        inputUsername.setText("");
+                        inputnew_password.setText("");
+                    } else {
+                        Toast.makeText(lupapassword.this, "Gagal Login / Username Tidak Terdaftar", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    // Handle unsuccessful response (HTTP error, network issues, etc.)
+                    Toast.makeText(lupapassword.this, "Gagal Login / Username Tidak Terdaftar", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override

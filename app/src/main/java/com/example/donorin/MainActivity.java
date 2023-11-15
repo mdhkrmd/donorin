@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         // on below line we are creating a retrofit
         // builder and passing our base url
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://b18f-103-23-244-254.ngrok.io/")
+                .baseUrl("https://514d-125-164-20-20.ngrok-free.app/")
                 // as we are sending data in json format so
                 // we have to add Gson converter factory
                 .addConverterFactory(GsonConverterFactory.create())

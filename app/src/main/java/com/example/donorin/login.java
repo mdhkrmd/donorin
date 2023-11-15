@@ -52,7 +52,7 @@ public class login extends AppCompatActivity {
 //        loadingPB.setVisibility(View.VISIBLE);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://b18f-103-23-244-254.ngrok.io/")
+                .baseUrl("https://514d-125-164-20-20.ngrok-free.app/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
