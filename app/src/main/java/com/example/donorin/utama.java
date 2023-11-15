@@ -24,7 +24,7 @@ public class utama extends AppCompatActivity {
         ambilAlamat = findViewById(R.id.ambilAlamat);
         Intent intent = getIntent();
 
-        ambilUsername.setText(intent.getExtras().getString("username"));
+        ambilUsername.setText(intent.getStringExtra("username"));
         ambilNama.setText(intent.getExtras().getString("nama"));
         ambilNik.setText(intent.getExtras().getString("nik"));
         ambilLahir.setText(intent.getExtras().getString("lahir"));

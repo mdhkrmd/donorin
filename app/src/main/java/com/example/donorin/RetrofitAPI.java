@@ -15,4 +15,7 @@ public interface RetrofitAPI {
 
     @POST("login")
     Call<DataModalLogin> createPostLogin(@Body DataModalLogin dataModalLogin);
+
+    @POST("forgot")
+    Call<DataModalForgot> createPostForgot(@Body DataModalForgot dataModalForgot);
 }

@@ -52,7 +52,7 @@ public class login extends AppCompatActivity {
 //        loadingPB.setVisibility(View.VISIBLE);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://7d19-125-164-21-248.ngrok.io")
+                .baseUrl("https://b18f-103-23-244-254.ngrok.io/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
@@ -74,7 +74,7 @@ public class login extends AppCompatActivity {
                         inputUsername.setText("");
                         inputPassword.setText("");
 
-                        String kirimusername = responseFromAPI.getUsername();
+//                        String kirimusername = responseFromAPI.getUsername();
                         String nik = responseFromAPI.getNik();
                         String nama = responseFromAPI.getNama();
                         String lahir = responseFromAPI.getLahir();
@@ -86,7 +86,7 @@ public class login extends AppCompatActivity {
                         // Assuming Utama.class is the target activity
                         Intent intent = new Intent(login.this, utama.class);
 
-                        intent.putExtra("username", kirimusername);
+                        intent.putExtra("username", inputUsername.getText().toString());
                         intent.putExtra("nik", nik);
                         intent.putExtra("nama", nama);
                         intent.putExtra("lahir", lahir);
