@@ -51,15 +51,8 @@ public class login extends AppCompatActivity {
         // below line is for displaying our progress bar.
 //        loadingPB.setVisibility(View.VISIBLE);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://514d-125-164-20-20.ngrok-free.app/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
-
         DataModalLogin modal = new DataModalLogin(username, password);
-
-        Call<DataModalLogin> call = retrofitAPI.createPostLogin(modal);
+        Call<DataModalLogin> call = RetroServer.getRetrofitAPI().createPostLogin(modal);
 
         call.enqueue(new Callback<DataModalLogin>() {
             @Override

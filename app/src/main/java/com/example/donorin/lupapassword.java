@@ -49,23 +49,11 @@ public class lupapassword extends AppCompatActivity {
         // below line is for displaying our progress bar.
 //        loadingPB.setVisibility(View.VISIBLE);
 
-        // on below line we are creating a retrofit
-        // builder and passing our base url
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://514d-125-164-20-20.ngrok-free.app/")
-                // as we are sending data in json format so
-                // we have to add Gson converter factory
-                .addConverterFactory(GsonConverterFactory.create())
-                // at last we are building our retrofit builder.
-                .build();
-        // below line is to create an instance for our retrofit api class.
-        RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
-
         // passing data from our text fields to our modal class.
         DataModalForgot modal = new DataModalForgot(username, new_password);
 
         // calling a method to create a post and passing our modal class.
-        Call<DataModalForgot> call = retrofitAPI.createPostForgot(modal);
+        Call<DataModalForgot> call = RetroServer.getRetrofitAPI().createPostForgot(modal);
 
         // on below line we are executing our method.
         call.enqueue(new Callback<DataModalForgot>() {
