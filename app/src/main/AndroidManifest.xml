@@ -15,16 +15,19 @@
         android:theme="@style/Theme.Donorin"
         tools:targetApi="31">
         <activity
+            android:name=".daftardonor"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".utama"
             android:exported="false" />
         <activity
-            android:name=".login"
+            android:name=".lupapassword"
             android:exported="false" />
         <activity
-            android:name=".lupapassword"
+            android:name=".login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
