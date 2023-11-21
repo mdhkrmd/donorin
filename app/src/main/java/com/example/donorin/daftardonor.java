@@ -116,18 +116,18 @@ public class daftardonor extends AppCompatActivity {
 
     private void getDataFromAPI() {
         // Panggil endpoint untuk mendapatkan data dari API
-        Call<List<GetData_NamaRspmi>> call = RetroServer.getRetrofitAPI().getData();
-        call.enqueue(new Callback<List<GetData_NamaRspmi>>() {
+        Call<List<RspmiData >> call = RetroServer.getRetrofitAPI().getData();
+        call.enqueue(new Callback<List<RspmiData >>() {
             @Override
-            public void onResponse(Call<List<GetData_NamaRspmi>> call, Response<List<GetData_NamaRspmi>> response) {
+            public void onResponse(Call<List<RspmiData >> call, Response<List<RspmiData >> response) {
                 if (response.isSuccessful()) {
-                    List<GetData_NamaRspmi> rspmiDataList = response.body();
+                    List<RspmiData > rspmiDataList = response.body();
 
                     if (rspmiDataList != null && !rspmiDataList.isEmpty()) {
                         List<String> namaList = new ArrayList<>();
-                        for (GetData_NamaRspmi rspmiData : rspmiDataList) {
+                        for (RspmiData  rspmiData : rspmiDataList) {
                             // Ambil nilai dari properti "nama" dan tambahkan ke daftar
-                            namaList.add(rspmiData.getNama());
+                            namaList.add(rspmiData.getNamaRspmi());
                         }
 
                         // Set data ke Spinner
@@ -159,7 +159,7 @@ public class daftardonor extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<GetData_NamaRspmi>> call, Throwable t) {
+            public void onFailure(Call<List<RspmiData >> call, Throwable t) {
                 Toast.makeText(daftardonor.this, "Network error", Toast.LENGTH_SHORT).show();
             }
         });

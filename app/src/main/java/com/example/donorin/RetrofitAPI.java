@@ -26,5 +26,5 @@ public interface RetrofitAPI {
     Call<DataModalDaftar> createPostDaftar(@Body DataModalDaftar dataModalDaftar);
 
     @GET("rspmi")
-    Call<List<GetData_NamaRspmi>> getData();
+    Call<List<RspmiData>> getData();
 }
