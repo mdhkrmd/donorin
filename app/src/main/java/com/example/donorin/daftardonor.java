@@ -26,11 +26,7 @@ public class daftardonor extends AppCompatActivity {
     Button btnDaftar;
     Spinner spinnerLokasi;
     TextView responseTV;
-    private List<String> dataList;
-
-    String[] courses = { "C", "Data structures",
-            "Interview prep", "Algorithms",
-            "Backend with java"};
+    private List<String> dataList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,22 +42,6 @@ public class daftardonor extends AppCompatActivity {
         btnDaftar = findViewById(R.id.btnDaftar);
         responseTV = findViewById(R.id.idTVResponse);
 
-        // Contoh data untuk Spinner
-        dataList = new ArrayList<>();
-        dataList.add("Item 1");
-        dataList.add("Item 2");
-        dataList.add("Item 3");
-
-        // Buat adapter untuk Spinner
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, dataList);
-
-        // Set tata letak dropdown
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        // Terapkan adapter ke Spinner
-        spinnerLokasi.setAdapter(adapter);
-
         Intent intent = getIntent();
         EditNik.setText(intent.getStringExtra("nik"));
         EditNama.setText(intent.getExtras().getString("nama"));
@@ -69,19 +49,7 @@ public class daftardonor extends AppCompatActivity {
         EditAlamat.setText(intent.getExtras().getString("alamat"));
         EditNo.setText(intent.getExtras().getString("no"));
 
-        spinnerLokasi.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                // Tindakan yang akan diambil saat item dipilih
-                String selectedItem = dataList.get(position);
-                Toast.makeText(daftardonor.this, "Selected: " + selectedItem, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                // Tindakan yang akan diambil jika tidak ada yang dipilih
-            }
-        });
+        getDataFromAPI();
 
         btnDaftar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,6 +110,57 @@ public class daftardonor extends AppCompatActivity {
                 // setting text to our text view when
                 // we get error response from API.
                 responseTV.setText("Error found is : " + t.getMessage());
+            }
+        });
+    }
+
+    private void getDataFromAPI() {
+        // Panggil endpoint untuk mendapatkan data dari API
+        Call<List<GetData_NamaRspmi>> call = RetroServer.getRetrofitAPI().getData();
+        call.enqueue(new Callback<List<GetData_NamaRspmi>>() {
+            @Override
+            public void onResponse(Call<List<GetData_NamaRspmi>> call, Response<List<GetData_NamaRspmi>> response) {
+                if (response.isSuccessful()) {
+                    List<GetData_NamaRspmi> rspmiDataList = response.body();
+
+                    if (rspmiDataList != null && !rspmiDataList.isEmpty()) {
+                        List<String> namaList = new ArrayList<>();
+                        for (GetData_NamaRspmi rspmiData : rspmiDataList) {
+                            // Ambil nilai dari properti "nama" dan tambahkan ke daftar
+                            namaList.add(rspmiData.getNama());
+                        }
+
+                        // Set data ke Spinner
+                        ArrayAdapter<String> adapter = new ArrayAdapter<>(daftardonor.this,
+                                android.R.layout.simple_spinner_item, namaList);
+                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        spinnerLokasi.setAdapter(adapter);
+
+                        // Menambahkan listener untuk menangani pemilihan item
+                        spinnerLokasi.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                                // Tindakan yang akan diambil saat item dipilih
+                                String selectedItem = namaList.get(position);
+                                Toast.makeText(daftardonor.this, "Selected: " + selectedItem, Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parentView) {
+                                // Tindakan yang akan diambil jika tidak ada yang dipilih
+                            }
+                        });
+                    } else {
+                        Toast.makeText(daftardonor.this, "Data list is empty", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(daftardonor.this, "Failed to fetch data", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<GetData_NamaRspmi>> call, Throwable t) {
+                Toast.makeText(daftardonor.this, "Network error", Toast.LENGTH_SHORT).show();
             }
         });
     }

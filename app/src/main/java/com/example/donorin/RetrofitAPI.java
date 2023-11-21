@@ -1,9 +1,12 @@
 package com.example.donorin;
 import com.example.donorin.DataModalRegister;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
+import retrofit2.http.GET;
 
 public interface RetrofitAPI {
 
@@ -21,4 +24,7 @@ public interface RetrofitAPI {
 
     @POST("daftar")
     Call<DataModalDaftar> createPostDaftar(@Body DataModalDaftar dataModalDaftar);
+
+    @GET("rspmi")
+    Call<List<GetData_NamaRspmi>> getData();
 }
