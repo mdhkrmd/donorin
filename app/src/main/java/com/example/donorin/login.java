@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,11 +17,18 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import android.os.Bundle;
+import android.content.SharedPreferences;
+import android.view.inputmethod.InputMethodManager;
+import android.content.Context;
 
 public class login extends AppCompatActivity {
 
     private EditText inputUsername, inputPassword;
     private Button btnLogin;
+    private CheckBox chkBox;
+    private SharedPreferences loginPreferences;
+    private SharedPreferences.Editor loginPrefsEditor;
+    private Boolean saveLogin;
 
 
     @Override
@@ -30,6 +39,23 @@ public class login extends AppCompatActivity {
         inputUsername = findViewById(R.id.inputUsername);
         inputPassword = findViewById(R.id.inputPassword);
         btnLogin = findViewById(R.id.btnLogin);
+        chkBox = findViewById(R.id.checkBoxIngat);
+
+        // Mendapatkan preferensi login
+        loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        loginPrefsEditor = loginPreferences.edit();
+
+        // Mengatur nilai checkbox sesuai preferensi
+        saveLogin = loginPreferences.getBoolean("saveLogin", false);
+        chkBox.setChecked(saveLogin);
+
+        // Jika checkbox tercentang, lakukan auto-login
+        if (saveLogin) {
+            String savedUsername = loginPreferences.getString("username", "");
+            String savedPassword = loginPreferences.getString("password", "");
+            postDataLogin(savedUsername, savedPassword);
+        }
+
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,15 +71,26 @@ public class login extends AppCompatActivity {
                 }
             }
         });
+
+        chkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // Menyimpan status checkbox ke preferensi
+                loginPrefsEditor.putBoolean("saveLogin", isChecked);
+                loginPrefsEditor.apply();
+            }
+        });
     }
     private void postDataLogin(String username, String password) {
-
-        // below line is for displaying our progress bar.
-//        loadingPB.setVisibility(View.VISIBLE);
 
         DataModalLogin modal = new DataModalLogin(username, password);
         Call<DataModalLogin> call = RetroServer.getRetrofitAPI().createPostLogin(modal);
 
+        if (chkBox.isChecked()) {
+            loginPrefsEditor.putString("username", username);
+            loginPrefsEditor.putString("password", password);
+            loginPrefsEditor.apply();
+        }
         call.enqueue(new Callback<DataModalLogin>() {
             @Override
             public void onResponse(Call<DataModalLogin> call, Response<DataModalLogin> response) {
