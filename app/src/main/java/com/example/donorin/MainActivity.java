@@ -1,4 +1,5 @@
 package com.example.donorin;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText inputUsername, inputPassword, inputNik, inputNama, inputLahir, inputDarah, inputAlamat, inputNo;
     private Button postDataBtn;
-    private TextView responseTV;
+    private TextView responseTV, tvLogin;
     private ProgressBar loadingPB;
 
     @Override
@@ -35,9 +36,27 @@ public class MainActivity extends AppCompatActivity {
         inputAlamat = findViewById(R.id.editAlamat);
         inputNo = findViewById(R.id.editNo);
 
+        tvLogin = findViewById(R.id.tvLogin);
+
         postDataBtn = findViewById(R.id.idBtnPost);
-        responseTV = findViewById(R.id.idTVResponse);
-        loadingPB = findViewById(R.id.idLoadingPB);
+//        responseTV = findViewById(R.id.idTVResponse);
+//        loadingPB = findViewById(R.id.idLoadingPB);
+
+        tvLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Aksi yang akan diambil saat TextView (txtForgot) diklik
+                // Misalnya, pindah ke halaman baru menggunakan Intent
+
+                Intent intent = new Intent(MainActivity.this, login.class);
+                // Gantilah NamaActivitySaatIni dan NamaActivityTujuan dengan nama aktivitas sebenarnya
+
+                // Jika Anda ingin membawa data tambahan ke aktivitas tujuan, Anda dapat menggunakan putExtra
+                // intent.putExtra("key", "value");
+
+                startActivity(intent);
+            }
+        });
 
         postDataBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
     private void postData(String username, String password, String nik, String nama, String lahir, String darah, String alamat, String nohp) {
 
         // below line is for displaying our progress bar.
-        loadingPB.setVisibility(View.VISIBLE);
+//        loadingPB.setVisibility(View.VISIBLE);
 
         // passing data from our text fields to our modal class.
         DataModalRegister modal = new DataModalRegister(username, password, nik, nama, lahir, darah, alamat, nohp);
@@ -85,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Data added to API", Toast.LENGTH_SHORT).show();
 
                 // below line is for hiding our progress bar.
-                loadingPB.setVisibility(View.GONE);
+//                loadingPB.setVisibility(View.GONE);
 
                 // on below line we are setting empty text
                 // to our both edit text.
@@ -107,14 +126,14 @@ public class MainActivity extends AppCompatActivity {
 
                 // below line we are setting our
                 // string to our text view.
-                responseTV.setText(responseString);
+//                responseTV.setText(responseString);
             }
 
             @Override
             public void onFailure(Call<DataModalRegister> call, Throwable t) {
                 // setting text to our text view when
                 // we get error response from API.
-                responseTV.setText("Error found is : " + t.getMessage());
+//                responseTV.setText("Error found is : " + t.getMessage());
             }
         });
     }

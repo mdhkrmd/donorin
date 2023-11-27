@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
@@ -26,6 +27,7 @@ public class login extends AppCompatActivity {
     private EditText inputUsername, inputPassword;
     private Button btnLogin;
     private CheckBox chkBox;
+    private TextView txtForgot, txtDaftar;
     private SharedPreferences loginPreferences;
     private SharedPreferences.Editor loginPrefsEditor;
     private Boolean saveLogin;
@@ -39,6 +41,8 @@ public class login extends AppCompatActivity {
         inputUsername = findViewById(R.id.inputUsername);
         inputPassword = findViewById(R.id.inputPassword);
         btnLogin = findViewById(R.id.btnLogin);
+        txtForgot = findViewById(R.id.txtLupa);
+        txtDaftar = findViewById(R.id.tvDaftar);
         chkBox = findViewById(R.id.checkBoxIngat);
 
         // Mendapatkan preferensi login
@@ -69,6 +73,39 @@ public class login extends AppCompatActivity {
                     postDataLogin(inputUsername.getText().toString(),
                             inputPassword.getText().toString());
                 }
+            }
+        });
+
+        // Dalam metode onCreate atau metode lainnya, setelah inisialisasi txtForgot
+        txtForgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Aksi yang akan diambil saat TextView (txtForgot) diklik
+                // Misalnya, pindah ke halaman baru menggunakan Intent
+
+                Intent intent = new Intent(login.this, lupapassword.class);
+                // Gantilah NamaActivitySaatIni dan NamaActivityTujuan dengan nama aktivitas sebenarnya
+
+                // Jika Anda ingin membawa data tambahan ke aktivitas tujuan, Anda dapat menggunakan putExtra
+                // intent.putExtra("key", "value");
+
+                startActivity(intent);
+            }
+        });
+
+        txtDaftar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Aksi yang akan diambil saat TextView (txtForgot) diklik
+                // Misalnya, pindah ke halaman baru menggunakan Intent
+
+                Intent intent = new Intent(login.this, MainActivity.class);
+                // Gantilah NamaActivitySaatIni dan NamaActivityTujuan dengan nama aktivitas sebenarnya
+
+                // Jika Anda ingin membawa data tambahan ke aktivitas tujuan, Anda dapat menggunakan putExtra
+                // intent.putExtra("key", "value");
+
+                startActivity(intent);
             }
         });
 

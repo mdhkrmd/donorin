@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
@@ -18,6 +19,7 @@ import android.os.Bundle;
 public class lupapassword extends AppCompatActivity {
 
     private EditText inputUsername, inputnew_password;
+    private TextView txtLogin;
     private Button btnForgot;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,7 @@ public class lupapassword extends AppCompatActivity {
 
         inputUsername = findViewById(R.id.inputUsername);
         inputnew_password = findViewById(R.id.inputNewPassword);
+        txtLogin = findViewById(R.id.txtLogin);
         btnForgot = findViewById(R.id.btnForgot);
 
         btnForgot.setOnClickListener(new View.OnClickListener() {
@@ -42,6 +45,24 @@ public class lupapassword extends AppCompatActivity {
                 }
             }
         });
+
+        txtLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Aksi yang akan diambil saat TextView (txtForgot) diklik
+                // Misalnya, pindah ke halaman baru menggunakan Intent
+
+                Intent intent = new Intent(lupapassword.this, login.class);
+                // Gantilah NamaActivitySaatIni dan NamaActivityTujuan dengan nama aktivitas sebenarnya
+
+                // Jika Anda ingin membawa data tambahan ke aktivitas tujuan, Anda dapat menggunakan putExtra
+                // intent.putExtra("key", "value");
+
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     private void postDataForgot(String username, String new_password) {
