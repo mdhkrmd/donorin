@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Donorin"
         tools:targetApi="31">
         <activity
-            android:name=".login"
+            android:name=".listRspmi"
             android:exported="false" />
         <activity
             android:name=".daftardonor"
@@ -30,7 +30,7 @@
             android:name=".lupapassword"
             android:exported="false" />
         <activity
-            android:name=".listRspmi"
+            android:name=".login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
