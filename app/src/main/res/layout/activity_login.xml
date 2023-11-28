@@ -130,10 +130,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:text="Masuk"
+                android:backgroundTint="#cd1624"
                 android:fontFamily="@font/playfairdisplaybold"
-                android:textSize="18dp"
-                android:backgroundTint="#cd1624"/>
+                android:text="Masuk"
+                android:textSize="18dp" />
 
             <TextView
                 android:id="@+id/txtLupa"

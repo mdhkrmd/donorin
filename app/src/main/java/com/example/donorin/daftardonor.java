@@ -40,7 +40,7 @@ public class daftardonor extends AppCompatActivity {
         EditJadwal = findViewById(R.id.editJadwal);
         spinnerLokasi = findViewById(R.id.spinnerLokasi);
         btnDaftar = findViewById(R.id.btnDaftar);
-        responseTV = findViewById(R.id.idTVResponse);
+//        responseTV = findViewById(R.id.idTVResponse);
 
         Intent intent = getIntent();
         EditNik.setText(intent.getStringExtra("nik"));
@@ -101,15 +101,15 @@ public class daftardonor extends AppCompatActivity {
                 DataModalDaftar responseFromAPI = response.body();
 
                 // on below line we are getting our data from modal class and adding it to our string.
-                String responseString = "Response Code : " + response.code();
-                responseTV.setText(responseString);
+//                String responseString = "Response Code : " + response.code();
+//                responseTV.setText(responseString);
 
             }
             @Override
             public void onFailure(Call<DataModalDaftar> call, Throwable t) {
                 // setting text to our text view when
                 // we get error response from API.
-                responseTV.setText("Error found is : " + t.getMessage());
+//                responseTV.setText("Error found is : " + t.getMessage());
             }
         });
     }
