@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class profil extends AppCompatActivity {
 
-    TextView ambilNama, txtUpdate;
+    TextView ambilNama, txtUpdate, txtLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +18,7 @@ public class profil extends AppCompatActivity {
 
         ambilNama = findViewById(R.id.txtNama);
         txtUpdate = findViewById(R.id.txtUpdate);
+        txtLogout = findViewById(R.id.txtLogout);
 
         txtUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,8 +29,20 @@ public class profil extends AppCompatActivity {
             }
         });
 
+        txtLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                login.clearLoginPreferences(profil.this);
+                Intent intentPindah = new Intent(profil.this, login.class);
+                startActivity(intentPindah);
+                finish();
+            }
+        });
+
         Intent intent = getIntent();
 //        ambilUsername.setText(intent.getStringExtra("username"));
         ambilNama.setText(intent.getExtras().getString("nama"));
     }
+
+
 }

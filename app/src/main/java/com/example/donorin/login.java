@@ -118,6 +118,14 @@ public class login extends AppCompatActivity {
             }
         });
     }
+
+    public static void clearLoginPreferences(Context context) {
+        SharedPreferences loginPreferences = context.getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor loginPrefsEditor = loginPreferences.edit();
+        loginPrefsEditor.clear();
+        loginPrefsEditor.apply();
+    }   
+
     private void postDataLogin(String username, String password) {
 
         DataModalLogin modal = new DataModalLogin(username, password);
