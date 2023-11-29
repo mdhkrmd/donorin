@@ -15,6 +15,15 @@
         android:theme="@style/Theme.Donorin"
         tools:targetApi="31">
         <activity
+            android:name=".darahDarurat"
+            android:exported="false" />
+        <activity
+            android:name=".riwayat"
+            android:exported="false" />
+        <activity
+            android:name=".updateProfil"
+            android:exported="false" />
+        <activity
             android:name=".profil"
             android:exported="false" />
         <activity

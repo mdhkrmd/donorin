@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class utama extends AppCompatActivity {
 
     TextView ambilUsername, ambilNik, ambilNama, ambilLahir, ambilDarah, ambilNo, ambilPoin, ambilAlamat;
-    TextView btnDaftar, reqDarah, btnPengaturan;
+    TextView btnDaftar, reqDarah, btnPengaturan, btnRiwayat, btnRspmi;
     private RecyclerView.Adapter adapterTrendList;
     private RecyclerView recyclerViewTrends;
     @Override
@@ -39,6 +39,8 @@ public class utama extends AppCompatActivity {
         btnDaftar = findViewById(R.id.btnDaftar);
         reqDarah = findViewById(R.id.reqDarah);
         btnPengaturan = findViewById(R.id.btnPengaturan);
+        btnRiwayat = findViewById(R.id.btnRiwayat);
+        btnRspmi = findViewById(R.id.btnRspmi);
 
         Intent intent = getIntent();
 //
@@ -82,6 +84,24 @@ public class utama extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intentPindah = new Intent(utama.this, profil.class);
                 intentPindah.putExtra("nama", ambilNama.getText().toString());
+
+                startActivity(intentPindah);
+            }
+        });
+
+        btnRiwayat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentPindah = new Intent(utama.this, riwayat.class);
+
+                startActivity(intentPindah);
+            }
+        });
+
+        btnRspmi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentPindah = new Intent(utama.this, listRspmi.class);
 
                 startActivity(intentPindah);
             }
