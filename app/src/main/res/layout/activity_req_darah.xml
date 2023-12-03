@@ -123,7 +123,7 @@
                 android:layout_marginTop="35dp"
                 android:backgroundTint="#cd1624"
                 android:fontFamily="@font/playfairdisplaybold"
-                android:text="Masuk"
+                android:text="Buat Permohonan"
                 android:textSize="18dp" />
 
         </LinearLayout>
