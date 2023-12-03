@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">donorin</string>
+    <string name="rincian">Rincian</string>
+    <string name="nama">Nama RS</string>
+    <string name="alamat">Alamat</string>
+    <string name="stok">Stok Darah</string>
+    <string name="pemohon">Pemohon</string>
+    <string name="goldar">Golongan Darah</string>
+    <string name="image_product">Gambar Produk</string>
 </resources>

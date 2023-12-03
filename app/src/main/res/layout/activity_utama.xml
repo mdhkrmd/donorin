@@ -222,6 +222,7 @@
                             </androidx.constraintlayout.widget.ConstraintLayout>
 
                             <TextView
+                                android:id="@+id/btnDarurat"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Darah Darurat"
@@ -300,14 +301,14 @@
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/textView7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Lihat Semua"
-                        android:textColor="@color/dark_blue"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/textView7"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Lihat Semua"-->
+<!--                        android:textColor="@color/dark_blue"-->
+<!--                        android:textSize="14sp"-->
+<!--                        android:textStyle="bold" />-->
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -359,6 +360,7 @@
                         android:src="@drawable/bottom_btn1" />
 
                     <TextView
+                        android:id="@+id/btnUtama"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Utama"

@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class utama extends AppCompatActivity {
 
     TextView ambilUsername, ambilNik, ambilNama, ambilLahir, ambilDarah, ambilNo, ambilPoin, ambilAlamat;
-    TextView btnDaftar, reqDarah, btnPengaturan, btnRiwayat, btnRspmi;
+    TextView btnDaftar, btnDarurat, reqDarah, btnUtama,  btnRiwayat, btnRspmi, btnPengaturan;
     private RecyclerView.Adapter adapterTrendList;
     private RecyclerView recyclerViewTrends;
     @Override
@@ -37,10 +37,13 @@ public class utama extends AppCompatActivity {
         ambilAlamat = findViewById(R.id.ambilAlamat);
 
         btnDaftar = findViewById(R.id.btnDaftar);
+        btnDarurat = findViewById(R.id.btnDarurat);
         reqDarah = findViewById(R.id.reqDarah);
-        btnPengaturan = findViewById(R.id.btnPengaturan);
+
+        btnUtama = findViewById(R.id.btnUtama);
         btnRiwayat = findViewById(R.id.btnRiwayat);
         btnRspmi = findViewById(R.id.btnRspmi);
+        btnPengaturan = findViewById(R.id.btnPengaturan);
 
         Intent intent = getIntent();
 //
@@ -66,6 +69,15 @@ public class utama extends AppCompatActivity {
                 intentPindah.putExtra("goldar", ambilDarah.getText().toString());
                 intentPindah.putExtra("alamat", ambilAlamat.getText().toString());
                 intentPindah.putExtra("no", ambilNo.getText().toString());
+
+                startActivity(intentPindah);
+            }
+        });
+
+        btnDarurat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentPindah = new Intent(utama.this, darahDarurat.class);
 
                 startActivity(intentPindah);
             }
