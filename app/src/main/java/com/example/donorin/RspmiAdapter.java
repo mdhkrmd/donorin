@@ -1,6 +1,8 @@
 package com.example.donorin;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +39,26 @@ public class RspmiAdapter extends RecyclerView.Adapter<RspmiAdapter.RspmiViewHol
                 .into(holder.ivImage);
 
         holder.tvTitle.setText(rspmiData.getNamaRspmi());
+        holder.tvAlamat.setText(rspmiData.getAlamatRspmi());
+        holder.tvAlamat.setText(rspmiData.getDeskripsiRspmi());
+
+        holder.ivImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, detailRspmi.class);
+
+                Bundle bundle = new Bundle();
+                bundle.putString("nama" , rspmiData.getNamaRspmi());
+                bundle.putString("alamat" , rspmiData.getAlamatRspmi());
+                bundle.putString("poster" , rspmiData.getFoto());
+                bundle.putString("deskripsi" , rspmiData.getDeskripsiRspmi());
+
+                intent.putExtras(bundle);
+
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -46,12 +68,14 @@ public class RspmiAdapter extends RecyclerView.Adapter<RspmiAdapter.RspmiViewHol
 
     static class RspmiViewHolder extends RecyclerView.ViewHolder {
         ImageView ivImage;
-        TextView tvTitle;
+        TextView tvTitle, tvAlamat, tvDeskripsi;
 
         RspmiViewHolder(@NonNull View itemView) {
             super(itemView);
             ivImage = itemView.findViewById(R.id.ivImage);
             tvTitle = itemView.findViewById(R.id.tvTitle);
+            tvAlamat = itemView.findViewById(R.id.tvAlamat);
+            tvDeskripsi = itemView.findViewById(R.id.tvDeskripsi);
         }
     }
 }

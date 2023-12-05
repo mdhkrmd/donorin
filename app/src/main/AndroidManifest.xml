@@ -24,7 +24,7 @@
             android:name=".darahDarurat"
             android:exported="false" />
         <activity
-            android:name=".riwayat"
+            android:name=".listRiwayat"
             android:exported="false" />
         <activity
             android:name=".updateProfil"

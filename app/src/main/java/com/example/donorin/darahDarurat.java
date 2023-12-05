@@ -32,7 +32,7 @@ public class darahDarurat extends AppCompatActivity {
         btnRiwayat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentPindah = new Intent(darahDarurat.this, riwayat.class);
+                Intent intentPindah = new Intent(darahDarurat.this, listRiwayat.class);
 
                 startActivity(intentPindah);
             }

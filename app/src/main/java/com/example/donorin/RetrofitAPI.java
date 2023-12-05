@@ -7,6 +7,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 public interface RetrofitAPI {
 
@@ -27,4 +28,15 @@ public interface RetrofitAPI {
 
     @GET("rspmi")
     Call<List<RspmiData>> getData();
+
+    @GET("rspmi/detail")
+    Call<List<RspmiData>> getRspmiDetail(
+            @Query("id") int id
+    );
+
+    @GET("riwayat")
+    Call<List<riwayatData>> getRiwayat(
+            @Query("nik") String nik
+    );
+
 }
