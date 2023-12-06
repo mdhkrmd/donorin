@@ -8,15 +8,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class utama extends AppCompatActivity {
 
     TextView ambilUsername, ambilNik, ambilNama, ambilLahir, ambilDarah, ambilNo, ambilPoin, ambilAlamat;
     TextView btnDaftar, btnDarurat, reqDarah, btnUtama,  btnRiwayat, btnRspmi, btnPengaturan;
     private RecyclerView.Adapter adapterTrendList;
-    private RecyclerView recyclerViewTrends;
+    private RecyclerView recyclerViewTrends, rvArtikel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +36,8 @@ public class utama extends AppCompatActivity {
         ambilNo = findViewById(R.id.ambilNo);
         ambilPoin = findViewById(R.id.ambilPoin);
         ambilAlamat = findViewById(R.id.ambilAlamat);
+
+        rvArtikel = findViewById(R.id.view1);
 
         btnDaftar = findViewById(R.id.btnDaftar);
         btnDarurat = findViewById(R.id.btnDarurat);
@@ -51,7 +59,7 @@ public class utama extends AppCompatActivity {
         ambilPoin.setText(String.valueOf(intent.getIntExtra("poin", 0)));
         ambilAlamat.setText(intent.getExtras().getString("alamat"));
 
-        initRecyclerView();
+        getArtikel();
 
 
         btnDaftar.setOnClickListener(new View.OnClickListener() {
@@ -115,16 +123,26 @@ public class utama extends AppCompatActivity {
             }
         });
     }
-    private void initRecyclerView() {
-        ArrayList<ArtikelData> items = new ArrayList<>();
-        items.add(new ArtikelData("Lorem Ipsum Judul", "Konteks Konteks Konteks", "trends"));
-        items.add(new ArtikelData("Lorem Ipsum Judul", "Konteks Konteks Konteks", "trends2"));
-        items.add(new ArtikelData("Lorem Ipsum Judul", "Konteks Konteks Konteks", "trends3"));
+    private void getArtikel() {
+        Call<List<ArtikelData>> apiCall =  RetroServer.getRetrofitAPI().getArtikel();
+        apiCall.enqueue(new Callback<List<ArtikelData>>() {
+            @Override
+            public void onResponse(Call<List<ArtikelData>> call, Response<List<ArtikelData>> response) {
+                List<ArtikelData> artikelDataList = response.body();
+                Toast.makeText(utama.this, "Artikel terambil", Toast.LENGTH_SHORT).show();
+                setAdapter(artikelDataList);
+            }
 
-        recyclerViewTrends = findViewById(R.id.view1);
-        recyclerViewTrends.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+            @Override
+            public void onFailure(Call<List<ArtikelData>> call, Throwable t) {
+                Toast.makeText(utama.this, "Error", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
-        adapterTrendList = new ArtikelAdapter(items);
-        recyclerViewTrends.setAdapter(adapterTrendList);
+    private void setAdapter(List<ArtikelData> artikelDataList) {
+        rvArtikel.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        ArtikelAdapter artikelAdapter = new ArtikelAdapter(this, artikelDataList);
+        rvArtikel.setAdapter(artikelAdapter);
     }
 }

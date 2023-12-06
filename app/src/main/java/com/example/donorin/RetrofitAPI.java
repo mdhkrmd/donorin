@@ -39,4 +39,7 @@ public interface RetrofitAPI {
             @Query("nik") String nik
     );
 
+    @GET("artikel")
+    Call<List<ArtikelData>> getArtikel();
+
 }

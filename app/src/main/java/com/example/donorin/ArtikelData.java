@@ -1,37 +1,36 @@
 package com.example.donorin;
 
+import com.google.gson.annotations.SerializedName;
+
 public class ArtikelData {
-    private String title;
-    private String subtitle;
-    private String picPath;
+    @SerializedName("id")
+    private int idArtikel;
+    @SerializedName("penulis")
+    private String penulisArtikel;
+    @SerializedName("judul")
+    private String judulArtikel;
+    @SerializedName("foto")
+    private String fotoArtikel;
+    @SerializedName("link")
+    private String linkArtikel;
 
-    public ArtikelData(String title, String subtitle, String picPath) {
-        this.title = title;
-        this.subtitle = subtitle;
-        this.picPath = picPath;
+    public int getIdArtikel() {
+        return idArtikel;
     }
 
-    public String getTitle() {
-        return title;
+    public String getPenulisArtikel() {
+        return penulisArtikel;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public String getJudulArtikel() {
+        return judulArtikel;
     }
 
-    public String getSubtitle() {
-        return subtitle;
+    public String getFotoArtikel() {
+        return fotoArtikel;
     }
 
-    public void setSubtitle(String subtitle) {
-        this.subtitle = subtitle;
-    }
-
-    public String getPicPath() {
-        return picPath;
-    }
-
-    public void setPicPath(String picPath) {
-        this.picPath = picPath;
+    public String getLinkArtikel() {
+        return linkArtikel;
     }
 }

@@ -15,13 +15,16 @@ import com.bumptech.glide.load.resource.bitmap.GranularRoundedCorners;
 import com.example.donorin.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ArtikelAdapter extends RecyclerView.Adapter<ArtikelAdapter.Viewholder> {
-    ArrayList<ArtikelData> items;
-    Context context;
 
-    public ArtikelAdapter(ArrayList<ArtikelData> items) {
-        this.items = items;
+    Context context;
+    List<ArtikelData> artikelList;
+
+    public ArtikelAdapter(Context context, List<ArtikelData> artikelList) {
+        this.context = context;
+        this.artikelList = artikelList;
     }
 
     @NonNull
@@ -34,20 +37,18 @@ public class ArtikelAdapter extends RecyclerView.Adapter<ArtikelAdapter.Viewhold
 
     @Override
     public void onBindViewHolder(@NonNull ArtikelAdapter.Viewholder holder, int position) {
-        holder.title.setText(items.get(position).getTitle());
-        holder.subtitle.setText(items.get(position).getSubtitle());
-
-        int drawableResourceId=holder.itemView.getResources()
-                .getIdentifier(items.get(position).getPicPath(),"drawable",holder.itemView.getContext().getPackageName());
+        ArtikelData artikelData = artikelList.get(position);
         Glide.with(context)
-                .load(drawableResourceId)
-                .transform(new GranularRoundedCorners(30,30,0,0))
+                .load(artikelList.get(position).getFotoArtikel())
                 .into(holder.pic);
+
+        holder.title.setText(artikelData.getJudulArtikel());
+        holder.subtitle.setText(artikelData.getPenulisArtikel());
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return artikelList.size();
     }
 
     public class Viewholder extends RecyclerView.ViewHolder {
