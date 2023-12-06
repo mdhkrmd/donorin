@@ -31,7 +31,7 @@ public class riwayatAdapter extends RecyclerView.Adapter<riwayatAdapter.riwayatV
     public void onBindViewHolder(@NonNull riwayatAdapter.riwayatViewHolder holder, int position) {
         riwayatData riwayatData = riwayatList.get(position);
 
-        holder.txtRspmi.setText(riwayatData.getNamaRiwayat());
+        holder.txtRspmi.setText(riwayatData.getLokasiRiwayat());
         holder.txtStatus.setText(riwayatData.getStatusRiwayat());
 
     }
@@ -42,12 +42,13 @@ public class riwayatAdapter extends RecyclerView.Adapter<riwayatAdapter.riwayatV
     }
 
     static class riwayatViewHolder extends RecyclerView.ViewHolder {
-        TextView txtRspmi, txtStatus;
+        TextView txtRspmi, txtStatus, tvTitle;
 
         riwayatViewHolder(@NonNull View itemView) {
             super(itemView);
             txtRspmi = itemView.findViewById(R.id.txtRspmi);
             txtStatus = itemView.findViewById(R.id.txtStatus);
+            tvTitle = itemView.findViewById(R.id.tvTitle);
         }
     }
 }

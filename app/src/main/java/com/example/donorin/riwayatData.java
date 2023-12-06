@@ -1,14 +1,23 @@
 package com.example.donorin;
 import com.google.gson.annotations.SerializedName;
 public class riwayatData {
+    @SerializedName("id")
     private String idRiwayat;
+    @SerializedName("nik")
     private String nikRiwayat;
+    @SerializedName("nama")
     private String namaRiwayat;
+    @SerializedName("darah")
     private String darahRiwayat;
+    @SerializedName("alamat")
     private String alamatRiwayat;
+    @SerializedName("no")
     private String nohpRiwayat;
+    @SerializedName("lokasi")
     private String lokasiRiwayat;
+    @SerializedName("jadwal")
     private String jadwalRiwayat;
+    @SerializedName("status")
     private String statusRiwayat;
 
     public String getIdRiwayat() {

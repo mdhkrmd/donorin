@@ -124,7 +124,7 @@ public class login extends AppCompatActivity {
         SharedPreferences.Editor loginPrefsEditor = loginPreferences.edit();
         loginPrefsEditor.clear();
         loginPrefsEditor.apply();
-    }   
+    }
 
     private void postDataLogin(String username, String password) {
 
