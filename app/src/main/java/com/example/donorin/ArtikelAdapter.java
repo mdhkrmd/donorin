@@ -1,6 +1,8 @@
 package com.example.donorin;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +46,16 @@ public class ArtikelAdapter extends RecyclerView.Adapter<ArtikelAdapter.Viewhold
 
         holder.title.setText(artikelData.getJudulArtikel());
         holder.subtitle.setText(artikelData.getPenulisArtikel());
+
+        holder.pic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String linkArtikel = artikelData.getLinkArtikel();
+                Uri webpage = Uri.parse(linkArtikel);
+                Intent i = new Intent(Intent.ACTION_VIEW, webpage);
+                context.startActivity(i);
+            }
+        });
     }
 
     @Override
