@@ -78,7 +78,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/txtNama"
+                android:id="@+id/ambilNama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Nama Pengguna"
@@ -89,12 +89,29 @@
                 android:textColor="@color/dark_blue"/>
 
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/ambilNik"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="username"
+                android:text="NIK"
                 android:textSize="18sp"
                 android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/ambilLahir"
+                android:layout_width="0dp"
+                android:layout_height="0dp"/>
+            <TextView
+                android:id="@+id/ambilDarah"
+                android:layout_width="0dp"
+                android:layout_height="0dp"/>
+            <TextView
+                android:id="@+id/ambilNo"
+                android:layout_width="0dp"
+                android:layout_height="0dp"/>
+            <TextView
+                android:id="@+id/ambilAlamat"
+                android:layout_width="0dp"
+                android:layout_height="0dp"/>
 
 
             <androidx.constraintlayout.widget.ConstraintLayout

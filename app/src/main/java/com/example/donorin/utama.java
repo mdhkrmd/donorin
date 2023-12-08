@@ -98,7 +98,12 @@ public class utama extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intentPindah = new Intent(utama.this, profil.class);
+                intentPindah.putExtra("nik", ambilNik.getText().toString());
                 intentPindah.putExtra("nama", ambilNama.getText().toString());
+                intentPindah.putExtra("lahir", ambilLahir.getText().toString());
+                intentPindah.putExtra("darah", ambilDarah.getText().toString());
+                intentPindah.putExtra("alamat", ambilAlamat.getText().toString());
+                intentPindah.putExtra("no", ambilNo.getText().toString());
 
                 startActivity(intentPindah);
             }

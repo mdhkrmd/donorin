@@ -26,6 +26,9 @@ public interface RetrofitAPI {
     @POST("daftar")
     Call<DataModalDaftar> createPostDaftar(@Body DataModalDaftar dataModalDaftar);
 
+    @POST("updateprofil")
+    Call<DataModalUpdateProfil> createPostUpdate(@Body DataModalUpdateProfil dataModalUpdateProfil);
+
     @GET("rspmi")
     Call<List<RspmiData>> getData();
 

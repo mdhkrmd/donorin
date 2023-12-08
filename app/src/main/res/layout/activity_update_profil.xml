@@ -39,7 +39,6 @@
                 android:orientation="vertical"
                 android:padding="20dp">
 
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -56,7 +55,8 @@
                     android:paddingLeft="10dp"
                     android:textColor="#f7f7f7"
                     android:textColorHint="#f7f7f7"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    android:enabled="false"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -72,7 +72,6 @@
                     android:layout_marginTop="8dp"
                     android:background="@drawable/shape"
                     android:hint="Nama..."
-                    android:inputType="textPassword"
                     android:paddingLeft="10dp"
                     android:textColor="#f7f7f7"
                     android:textColorHint="#f7f7f7"
@@ -124,7 +123,7 @@
                     android:text="Alamat" />
 
                 <EditText
-                    android:id="@+id/editAlama"
+                    android:id="@+id/editAlamat"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginTop="8dp"
