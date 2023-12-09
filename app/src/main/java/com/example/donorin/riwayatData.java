@@ -20,6 +20,9 @@ public class riwayatData {
     @SerializedName("status")
     private String statusRiwayat;
 
+    @SerializedName("tanggal_daftar")
+    private String tanggal_daftar;
+
     public String getIdRiwayat() {
         return idRiwayat;
     }
@@ -90,5 +93,13 @@ public class riwayatData {
 
     public void setStatusRiwayat(String statusRiwayat) {
         this.statusRiwayat = statusRiwayat;
+    }
+
+    public String getTanggal_daftar() {
+        return tanggal_daftar;
+    }
+
+    public void setTanggal_daftar(String tanggal_daftar) {
+        this.tanggal_daftar = tanggal_daftar;
     }
 }

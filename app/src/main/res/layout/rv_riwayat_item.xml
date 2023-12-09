@@ -17,6 +17,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/txtTanggal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tanggal"
@@ -31,12 +32,19 @@
                 android:layout_marginTop="30dp">
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ID :"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="15dp"/>
+
+                <TextView
                     android:id="@+id/txtId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ID Daftar xxxx"
+                    android:text=""
                     android:textStyle="bold"
-                    android:layout_marginLeft="15dp"/>
+                    android:layout_marginLeft="5dp"/>
 
                 <TextView
                     android:id="@+id/txtStatus"
@@ -61,17 +69,12 @@
                     android:layout_marginLeft="15dp"/>
 
                 <TextView
+                    android:id="@+id/txtNama"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="+"
+                    android:text="Nama"
                     android:layout_marginLeft="100dp"/>
 
-                <TextView
-                    android:id="@+id/txtPoin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Poin"
-                    android:layout_marginLeft="5dp"/>
 
             </LinearLayout>
 
@@ -86,7 +89,7 @@
             android:layout_alignParentBottom="true"
             android:background="@color/cardview_dark_background"
             android:gravity="center"
-            android:text="This is Text"
+            android:text="Riwayat"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"/>

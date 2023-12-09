@@ -33,7 +33,9 @@ public class riwayatAdapter extends RecyclerView.Adapter<riwayatAdapter.riwayatV
 
         holder.txtRspmi.setText(riwayatData.getLokasiRiwayat());
         holder.txtStatus.setText(riwayatData.getStatusRiwayat());
-
+        holder.txtTanggal.setText(riwayatData.getTanggal_daftar());
+        holder.txtNama.setText(riwayatData.getNamaRiwayat());
+        holder.txtId.setText(riwayatData.getIdRiwayat());
     }
 
     @Override
@@ -42,13 +44,16 @@ public class riwayatAdapter extends RecyclerView.Adapter<riwayatAdapter.riwayatV
     }
 
     static class riwayatViewHolder extends RecyclerView.ViewHolder {
-        TextView txtRspmi, txtStatus, tvTitle;
+        TextView txtRspmi, txtStatus, tvTitle, txtTanggal, txtNama, txtId;
 
         riwayatViewHolder(@NonNull View itemView) {
             super(itemView);
             txtRspmi = itemView.findViewById(R.id.txtRspmi);
             txtStatus = itemView.findViewById(R.id.txtStatus);
             tvTitle = itemView.findViewById(R.id.tvTitle);
+            txtTanggal = itemView.findViewById(R.id.txtTanggal);
+            txtNama = itemView.findViewById(R.id.txtNama);
+            txtId = itemView.findViewById(R.id.txtId);
         }
     }
 }
