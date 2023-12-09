@@ -2,9 +2,12 @@ package com.example.donorin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +20,8 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText inputUsername, inputPassword, inputNik, inputNama, inputLahir, inputDarah, inputAlamat, inputNo;
+    private EditText inputUsername, inputPassword, inputNik, inputNama, inputLahir, inputAlamat, inputNo;
+    Spinner inputDarah;
     private Button postDataBtn;
     private TextView responseTV, tvLogin;
     private ProgressBar loadingPB;
@@ -39,20 +43,34 @@ public class MainActivity extends AppCompatActivity {
         tvLogin = findViewById(R.id.tvLogin);
 
         postDataBtn = findViewById(R.id.idBtnPost);
-//        responseTV = findViewById(R.id.idTVResponse);
-//        loadingPB = findViewById(R.id.idLoadingPB);
+
+        String[] tipeDarah = {"A+", "A-", "B+", "B-", "O+"};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, tipeDarah);
+
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        inputDarah.setAdapter(adapter);
+
+        inputDarah.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // Get the selected item
+                String selectedBloodType = tipeDarah[position];
+                Toast.makeText(MainActivity.this, "Selected: " + selectedBloodType, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // Do nothing here
+            }
+        });
 
         tvLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Aksi yang akan diambil saat TextView (txtForgot) diklik
-                // Misalnya, pindah ke halaman baru menggunakan Intent
-
                 Intent intent = new Intent(MainActivity.this, login.class);
-                // Gantilah NamaActivitySaatIni dan NamaActivityTujuan dengan nama aktivitas sebenarnya
-
-                // Jika Anda ingin membawa data tambahan ke aktivitas tujuan, Anda dapat menggunakan putExtra
-                // intent.putExtra("key", "value");
 
                 startActivity(intent);
             }
@@ -67,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                         || inputNik.getText().toString().trim().length()==0
                         || inputNama.getText().toString().trim().length()==0
                         || inputLahir.getText().toString().trim().length()==0
-                        || inputDarah.getText().toString().trim().length()==0
+                        || inputDarah.getSelectedItem().toString().trim().length()==0
                         || inputAlamat.getText().toString().trim().length()==0
                         || inputNo.getText().toString().trim().length()==0) {
                     Toast.makeText(MainActivity.this, "Mohon lengkapi yang masih kosong", Toast.LENGTH_SHORT).show();
@@ -78,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                     inputNik.getText().toString(),
                     inputNama.getText().toString(),
                     inputLahir.getText().toString(),
-                    inputDarah.getText().toString(),
+                    inputDarah.getSelectedItem().toString(),
                     inputAlamat.getText().toString(),
                     inputNo.getText().toString());
                 }
@@ -101,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<DataModalRegister> call, Response<DataModalRegister> response) {
                 // this method is called when we get response from our api.
-                Toast.makeText(MainActivity.this, "Data added to API", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Berhasil daftar akun", Toast.LENGTH_SHORT).show();
 
                 // below line is for hiding our progress bar.
 //                loadingPB.setVisibility(View.GONE);
@@ -113,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                 inputNik.setText("");
                 inputNama.setText("");
                 inputLahir.setText("");
-                inputDarah.setText("");
+                inputDarah.setSelection(-1);
                 inputAlamat.setText("");
                 inputNo.setText("");
 

@@ -97,6 +97,7 @@
                     android:layout_marginTop="8dp"
                     android:background="@drawable/shape"
                     android:hint="NIK.."
+                    android:inputType="number"
                     android:paddingLeft="10dp"
                     android:textColor="#f7f7f7"
                     android:textColorHint="#f7f7f7"
@@ -147,7 +148,7 @@
                     android:fontFamily="@font/playfairdisplayregular"
                     android:text="Golongan Darah" />
 
-                <EditText
+                <Spinner
                     android:id="@+id/editDarah"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -191,6 +192,7 @@
                     android:layout_marginTop="8dp"
                     android:background="@drawable/shape"
                     android:hint="No..."
+                    android:inputType="number"
                     android:paddingLeft="10dp"
                     android:textColor="#f7f7f7"
                     android:textColorHint="#f7f7f7"

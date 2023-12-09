@@ -76,7 +76,7 @@
                 android:layout_marginTop="15dp"
                 android:fontFamily="@font/playfairdisplayregular"/>
 
-            <EditText
+            <Spinner
                 android:id="@+id/inputGoldar"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
@@ -117,7 +117,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/btnLogin"
+                android:id="@+id/btnReq"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="35dp"

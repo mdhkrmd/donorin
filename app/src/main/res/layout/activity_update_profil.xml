@@ -103,7 +103,7 @@
                     android:fontFamily="@font/playfairdisplayregular"
                     android:text="Darah" />
 
-                <EditText
+                <Spinner
                     android:id="@+id/editDarah"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -151,7 +151,8 @@
                     android:paddingLeft="10dp"
                     android:textColor="#f7f7f7"
                     android:textColorHint="#f7f7f7"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    android:inputType="number"/>
 
 
                 <Button
@@ -162,7 +163,7 @@
                     android:backgroundTint="#cd1624"
                     android:fontFamily="@font/playfairdisplaybold"
                     android:text="Update Data"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"/>
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

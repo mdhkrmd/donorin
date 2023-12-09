@@ -22,7 +22,8 @@ import retrofit2.Response;
 
 public class daftardonor extends AppCompatActivity {
 
-    EditText EditNik, EditNama, EditDarah, EditAlamat, EditNo, EditJadwal;
+    EditText EditNik, EditNama, EditDarah, EditAlamat, EditNo;
+    Spinner EditJadwal;
     Button btnDaftar;
     Spinner spinnerLokasi;
     TextView responseTV;
@@ -51,11 +52,34 @@ public class daftardonor extends AppCompatActivity {
 
         getDataFromAPI();
 
+        String[] jadwal = {"08.00 - 11.30", "13.00 - 16.00", "19.00 - 21.00"};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, jadwal);
+
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        EditJadwal.setAdapter(adapter);
+
+        EditJadwal.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // Get the selected item
+                String selectedBloodType = jadwal[position];
+                Toast.makeText(daftardonor.this, "Selected: " + selectedBloodType, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // Do nothing here
+            }
+        });
+
         btnDaftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // validating if the text field is empty or not.
-                if (EditJadwal.getText().toString().trim().length()==0 ||
+                if (EditJadwal.getSelectedItem().toString().trim().length()==0 ||
                 spinnerLokasi.getSelectedItem().toString().trim().length()==0) {
                     Toast.makeText(daftardonor.this, "Mohon lengkapi yang masih kosong", Toast.LENGTH_SHORT).show();
                 }
@@ -66,7 +90,7 @@ public class daftardonor extends AppCompatActivity {
                             EditAlamat.getText().toString(),
                             EditNo.getText().toString(),
                             spinnerLokasi.getSelectedItem().toString(),
-                            EditJadwal.getText().toString());
+                            EditJadwal.getSelectedItem().toString());
                 }
             }
         });
@@ -94,7 +118,7 @@ public class daftardonor extends AppCompatActivity {
                 EditAlamat.setText("");
                 EditNo.setText("");
                 spinnerLokasi.setSelection(0);
-                EditJadwal.setText("");
+                EditJadwal.setSelection(0);
 
                 // we are getting response from our body
                 // and passing it to our modal class.

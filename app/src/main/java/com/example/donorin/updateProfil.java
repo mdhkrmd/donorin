@@ -5,10 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Arrays;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -16,7 +21,8 @@ import retrofit2.Response;
 
 public class updateProfil extends AppCompatActivity {
 
-    EditText ambilNik, ambilNama, ambilLahir, ambilDarah, ambilAlamat, ambilNo;
+    EditText ambilNik, ambilNama, ambilLahir, ambilAlamat, ambilNo;
+    Spinner ambilDarah;
     Button btnUpdate;
 
     @Override
@@ -37,9 +43,34 @@ public class updateProfil extends AppCompatActivity {
         ambilNik.setText(intent.getStringExtra("nik"));
         ambilNama.setText(intent.getExtras().getString("nama"));
         ambilLahir.setText(intent.getExtras().getString("lahir"));
-        ambilDarah.setText(intent.getExtras().getString("darah"));
         ambilAlamat.setText(intent.getExtras().getString("alamat"));
         ambilNo.setText(intent.getExtras().getString("no"));
+
+        String[] tipeDarah = {"A+", "A-", "B+", "B-", "O+"};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, tipeDarah);
+
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        ambilDarah.setAdapter(adapter);
+
+        int position = Arrays.asList(tipeDarah).indexOf(intent.getExtras().getString("darah"));
+        ambilDarah.setSelection(position);
+        ambilDarah.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // Get the selected item
+                String selectedBloodType = tipeDarah[position];
+                Toast.makeText(updateProfil.this, "Selected: " + selectedBloodType, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // Do nothing here
+            }
+        });
+
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +79,7 @@ public class updateProfil extends AppCompatActivity {
                 if (ambilNik.getText().toString().trim().length()==0
                         || ambilNama.getText().toString().trim().length()==0
                         || ambilLahir.getText().toString().trim().length()==0
-                        || ambilDarah.getText().toString().trim().length()==0
+                        || ambilDarah.getSelectedItem().toString().trim().length()==0
                         || ambilAlamat.getText().toString().trim().length()==0
                         || ambilNo.getText().toString().trim().length()==0) {
                     Toast.makeText(updateProfil.this, "Mohon lengkapi yang masih kosong", Toast.LENGTH_SHORT).show();
@@ -57,7 +88,7 @@ public class updateProfil extends AppCompatActivity {
                     postDataUpdate(ambilNik.getText().toString(),
                             ambilNama.getText().toString(),
                             ambilLahir.getText().toString(),
-                            ambilDarah.getText().toString(),
+                            ambilDarah.getSelectedItem().toString(),
                             ambilAlamat.getText().toString(),
                             ambilNo.getText().toString());
                 }

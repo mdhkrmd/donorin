@@ -34,7 +34,7 @@ public class riwayatAdapter extends RecyclerView.Adapter<riwayatAdapter.riwayatV
         holder.txtRspmi.setText(riwayatData.getLokasiRiwayat());
         holder.txtStatus.setText(riwayatData.getStatusRiwayat());
         holder.txtTanggal.setText(riwayatData.getTanggal_daftar());
-        holder.txtNama.setText(riwayatData.getNamaRiwayat());
+        holder.txtNama.setText(riwayatData.getJadwalRiwayat());
         holder.txtId.setText(riwayatData.getIdRiwayat());
     }
 

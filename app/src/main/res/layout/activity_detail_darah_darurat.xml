@@ -40,6 +40,7 @@
                 android:layout_height="match_parent"
                 android:contentDescription="@string/image_product"
                 android:scaleType="fitCenter"
+                android:src="@drawable/user"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/toolbar" />
@@ -127,6 +128,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvTitleTutorial" />
+
+        <Button
+            android:id="@+id/btnDonor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#cd1624"
+            android:fontFamily="@font/playfairdisplaybold"
+            android:text="Donor"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDeskripsi" />
 
         <ProgressBar
             android:id="@+id/loading"
