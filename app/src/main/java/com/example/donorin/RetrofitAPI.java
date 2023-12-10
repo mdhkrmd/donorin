@@ -29,6 +29,9 @@ public interface RetrofitAPI {
     @POST("updateprofil")
     Call<DataModalUpdateProfil> createPostUpdate(@Body DataModalUpdateProfil dataModalUpdateProfil);
 
+    @GET("darah-darurat")
+    Call<List<DataModalDarahDarurat>> getDataDarahDaruratList();
+
     @POST("tambah-darah-darurat")
     Call<DataModalDarahDarurat> createDarahDarurat(@Body DataModalDarahDarurat dataModalDarahDarurat);
 

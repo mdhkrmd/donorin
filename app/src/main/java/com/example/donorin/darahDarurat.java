@@ -4,12 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class darahDarurat extends AppCompatActivity {
 
-    TextView btnUtama,  btnRiwayat, btnRspmi, btnPengaturan;
+    TextView btnUtama, btnRiwayat, btnRspmi, btnPengaturan;
+    ListView lvDarahDarurat;
+    DarahDaruratAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +31,11 @@ public class darahDarurat extends AppCompatActivity {
         btnRiwayat = findViewById(R.id.btnRiwayat);
         btnRspmi = findViewById(R.id.btnRspmi);
         btnPengaturan = findViewById(R.id.btnPengaturan);
+
+        lvDarahDarurat = findViewById(R.id.lvDarahDarurat);
+
+        // Panggil method yang sesuai untuk mendapatkan data darah darurat
+        fetchDataDarahDarurat();
 
         btnUtama.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +68,36 @@ public class darahDarurat extends AppCompatActivity {
                 Intent intentPindah = new Intent(darahDarurat.this, profil.class);
 
                 startActivity(intentPindah);
+            }
+        });
+    }
+
+    private void fetchDataDarahDarurat() {
+
+        Call<List<DataModalDarahDarurat>> call =  RetroServer.getRetrofitAPI().getDataDarahDaruratList();
+        call.enqueue(new Callback<List<DataModalDarahDarurat>>() {
+            @Override
+            public void onResponse(Call<List<DataModalDarahDarurat>> call, Response<List<DataModalDarahDarurat>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    // Jika respons berhasil dan body tidak null, inisialisasi adapter dan set ke dalam ListView
+                    List<DataModalDarahDarurat> data = response.body();
+                    Log.e("Error", "Request failed: " + response.body());
+                    adapter = new DarahDaruratAdapter(darahDarurat.this, data);
+                    Log.e("Error", "Request failed: " + adapter);
+                    lvDarahDarurat.setAdapter(adapter);
+                } else {
+                    // Tampilkan pesan jika respons tidak berhasil atau body null
+                    Toast.makeText(darahDarurat.this, "Data not found", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<DataModalDarahDarurat>> call, Throwable t) {
+                // Tangani kasus ketika permintaan gagal (misalnya, masalah jaringan)
+                Toast.makeText(darahDarurat.this, "Request failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("Error", "Request failed: " + t.getMessage());
+                Log.e("Error", "Request failed: " + Log.getStackTraceString(t));
+
             }
         });
     }

@@ -72,7 +72,7 @@ public class reqDarah extends AppCompatActivity {
             return;
         }
 
-        DataModalDarahDarurat newData = new DataModalDarahDarurat(nama, golonganDarah, deskripsi);
+        DataModalDarahDarurat newData = new DataModalDarahDarurat(null, nama, golonganDarah, deskripsi, null, null);
 
         Call<DataModalDarahDarurat> call = RetroServer.getRetrofitAPI().createDarahDarurat(newData);
         call.enqueue(new Callback<DataModalDarahDarurat>() {
