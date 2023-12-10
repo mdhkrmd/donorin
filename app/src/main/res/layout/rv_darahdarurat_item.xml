@@ -52,4 +52,13 @@
         android:text="Tanggal "
         android:textColor="#455A64"
         android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/btnDaftarDarurat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Daftar Donor"
+        android:backgroundTint="#cd1624"
+        android:fontFamily="@font/playfairdisplaybold"
+        />
 </LinearLayout>

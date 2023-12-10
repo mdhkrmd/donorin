@@ -2,14 +2,17 @@ package com.example.donorin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -22,6 +25,10 @@ public class darahDarurat extends AppCompatActivity {
     ListView lvDarahDarurat;
     DarahDaruratAdapter adapter;
 
+    TextView ambilNik, ambilNama, ambilDarah, ambilAlamat, ambilNo;
+    List<DataModalLogin> dataList = new ArrayList<>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +40,20 @@ public class darahDarurat extends AppCompatActivity {
         btnPengaturan = findViewById(R.id.btnPengaturan);
 
         lvDarahDarurat = findViewById(R.id.lvDarahDarurat);
+
+        ambilNik = findViewById(R.id.ambilNik);
+        ambilNama = findViewById(R.id.ambilNama);
+        ambilDarah = findViewById(R.id.ambilDarah);
+        ambilAlamat = findViewById(R.id.ambilAlamat);
+        ambilNo = findViewById(R.id.ambilNo);
+
+        Intent intent = getIntent();
+        ambilNik.setText(intent.getExtras().getString("nik"));
+        ambilNama.setText(intent.getExtras().getString("nama"));
+        ambilDarah.setText(intent.getExtras().getString("goldar"));
+        ambilAlamat.setText(intent.getExtras().getString("alamat"));
+        ambilNo.setText(intent.getExtras().getString("no"));
+
 
         // Panggil method yang sesuai untuk mendapatkan data darah darurat
         fetchDataDarahDarurat();
@@ -82,7 +103,7 @@ public class darahDarurat extends AppCompatActivity {
                     // Jika respons berhasil dan body tidak null, inisialisasi adapter dan set ke dalam ListView
                     List<DataModalDarahDarurat> data = response.body();
                     Log.e("Error", "Request failed: " + response.body());
-                    adapter = new DarahDaruratAdapter(darahDarurat.this, data);
+                    adapter = new DarahDaruratAdapter(darahDarurat.this, data, ambilNik.getText().toString(), ambilNama.getText().toString(), ambilDarah.getText().toString(), ambilAlamat.getText().toString(), ambilNo.getText().toString());
                     Log.e("Error", "Request failed: " + adapter);
                     lvDarahDarurat.setAdapter(adapter);
                 } else {

@@ -6,4 +6,210 @@
     android:layout_height="match_parent"
     tools:context=".daftarDarahDarurat">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cd_black"
+            android:layout_width="match_parent"
+            android:layout_height="700dp"
+            android:backgroundTint="#f7f7f7"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/tvMasuk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Daftar Donor"
+                android:fontFamily="@font/playfairdisplaybold"
+                android:textSize="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Halaman ini digunakan untuk mendaftar donor"
+                android:fontFamily="@font/playfairdisplaymedium"
+                android:textSize="15dp"
+                android:layout_marginTop="75dp"
+                android:layout_marginLeft="20dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/playfairdisplayregular"
+                    android:text="NIK Donatur" />
+
+                <EditText
+                    android:id="@+id/editNik"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/shape"
+                    android:hint="NIK..."
+                    android:paddingLeft="10dp"
+                    android:textColor="#f7f7f7"
+                    android:textColorHint="#f7f7f7"
+                    android:textSize="15dp"
+                    android:enabled="false"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/playfairdisplayregular"
+                    android:text="Nama Donatur" />
+
+                <EditText
+                    android:id="@+id/editNama"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/shape"
+                    android:hint="Nama..."
+                    android:paddingLeft="10dp"
+                    android:textColor="#f7f7f7"
+                    android:textColorHint="#f7f7f7"
+                    android:textSize="15dp"
+                    android:enabled="false"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/playfairdisplayregular"
+                    android:text="Golongan Darah Donatur" />
+
+                <EditText
+                    android:id="@+id/editDarah"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/shape"
+                    android:hint="Golongan Darah.."
+                    android:paddingLeft="10dp"
+                    android:textColor="#f7f7f7"
+                    android:textColorHint="#f7f7f7"
+                    android:textSize="15dp"
+                    android:enabled="false"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/playfairdisplayregular"
+                    android:text="Alamat Donatur" />
+
+                <EditText
+                    android:id="@+id/editAlamat"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/shape"
+                    android:hint="Alamat..."
+                    android:paddingLeft="10dp"
+                    android:textColor="#f7f7f7"
+                    android:textColorHint="#f7f7f7"
+                    android:textSize="15dp"
+                    android:enabled="false"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/playfairdisplayregular"
+                    android:text="Nomor Donatur" />
+
+                <EditText
+                    android:id="@+id/editNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/shape"
+                    android:hint="No..."
+                    android:paddingLeft="10dp"
+                    android:textColor="#f7f7f7"
+                    android:textColorHint="#f7f7f7"
+                    android:textSize="15dp"
+                    android:enabled="false"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/playfairdisplayregular"
+                    android:text="Penerima Darah" />
+
+                <EditText
+                    android:id="@+id/editPenerima"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="10dp"
+                    android:background="@drawable/shape"
+                    android:textColor="#f7f7f7"
+                    android:textSize="15dp"
+                    android:enabled="false"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/playfairdisplayregular"
+                    android:text="Golongan Darah Penerima" />
+
+                <EditText
+                    android:id="@+id/editDarahPenerima"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/shape"
+                    android:hint="Golongan Darah.."
+                    android:paddingLeft="10dp"
+                    android:textColor="#f7f7f7"
+                    android:textColorHint="#f7f7f7"
+                    android:textSize="15dp"
+                    android:enabled="false"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvLogin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:fontFamily="@font/playfairdisplaybold"
+                        android:text="Pastikan data sudah benar"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+                <Button
+                    android:id="@+id/btnDaftar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:backgroundTint="#cd1624"
+                    android:fontFamily="@font/playfairdisplaybold"
+                    android:text="Daftar"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

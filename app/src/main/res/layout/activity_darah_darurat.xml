@@ -21,6 +21,27 @@
             android:orientation="vertical"
             android:paddingBottom="50dp">
 
+            <TextView
+                android:id="@+id/ambilNik"
+                android:layout_width="0dp"
+                android:layout_height="0dp"/>
+            <TextView
+                android:id="@+id/ambilNama"
+                android:layout_width="0dp"
+                android:layout_height="0dp"/>
+            <TextView
+                android:id="@+id/ambilDarah"
+                android:layout_width="0dp"
+                android:layout_height="0dp"/>
+            <TextView
+                android:id="@+id/ambilAlamat"
+                android:layout_width="0dp"
+                android:layout_height="0dp"/>
+            <TextView
+                android:id="@+id/ambilNo"
+                android:layout_width="0dp"
+                android:layout_height="0dp"/>
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

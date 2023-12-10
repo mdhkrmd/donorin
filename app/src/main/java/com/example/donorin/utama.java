@@ -49,8 +49,7 @@ public class utama extends AppCompatActivity {
         btnPengaturan = findViewById(R.id.btnPengaturan);
 
         Intent intent = getIntent();
-//
-//        ambilUsername.setText(intent.getStringExtra("username"));
+
         ambilNama.setText(intent.getExtras().getString("nama"));
         ambilNik.setText(intent.getExtras().getString("nik"));
         ambilLahir.setText(intent.getExtras().getString("lahir"));
@@ -81,6 +80,12 @@ public class utama extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intentPindah = new Intent(utama.this, darahDarurat.class);
+
+                intentPindah.putExtra("nik", ambilNik.getText().toString());
+                intentPindah.putExtra("nama", ambilNama.getText().toString());
+                intentPindah.putExtra("goldar", ambilDarah.getText().toString());
+                intentPindah.putExtra("alamat", ambilAlamat.getText().toString());
+                intentPindah.putExtra("no", ambilNo.getText().toString());
 
                 startActivity(intentPindah);
             }
