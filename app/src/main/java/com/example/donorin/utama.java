@@ -55,7 +55,8 @@ public class utama extends AppCompatActivity {
         ambilLahir.setText(intent.getExtras().getString("lahir"));
         ambilDarah.setText(intent.getExtras().getString("goldar"));
         ambilNo.setText(intent.getExtras().getString("no"));
-        ambilPoin.setText(String.valueOf(intent.getIntExtra("poin", 0)));
+//        ambilPoin.setText(String.valueOf(intent.getIntExtra("poin", 0)));
+        ambilPoin.setText(intent.getExtras().getString("goldar"));
         ambilAlamat.setText(intent.getExtras().getString("alamat"));
 
         getArtikel();

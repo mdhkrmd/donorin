@@ -35,6 +35,10 @@ public interface RetrofitAPI {
     @POST("tambah-darah-darurat")
     Call<DataModalDarahDarurat> createDarahDarurat(@Body DataModalDarahDarurat dataModalDarahDarurat);
 
+    @POST("daftar-donor-darurat")
+    Call<DataModalDaftar> createPostDaftarDonorDarurat(@Body DataModalDaftar dataModalDaftar);
+
+
     @GET("rspmi")
     Call<List<RspmiData>> getData();
 
