@@ -153,7 +153,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginTop="8dp"
-                    android:background="@drawable/shape"
                     android:paddingLeft="10dp"
                     android:textColor="#f7f7f7"
                     android:textColorHint="#f7f7f7"

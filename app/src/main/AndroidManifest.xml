@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Donorin"
         tools:targetApi="31">
         <activity
+            android:name=".daftarDarahDarurat"
+            android:exported="false" />
+        <activity
             android:name=".detailDarahDarurat"
             android:exported="false" />
         <activity

@@ -3,6 +3,7 @@ package com.example.donorin;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -10,6 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class reqDarah extends AppCompatActivity {
 
@@ -50,5 +55,48 @@ public class reqDarah extends AppCompatActivity {
             }
         });
 
+        btnReq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tambahDataDarahDarurat();
+            }
+        });
+    }
+    private void tambahDataDarahDarurat() {
+        String nama = inputNama.getText().toString();
+        String golonganDarah = inputGoldar.getSelectedItem().toString();
+        String deskripsi = inputDeskripsi.getText().toString();
+
+        if (nama.isEmpty() || golonganDarah.isEmpty() || deskripsi.isEmpty() || deskripsi.isEmpty()) {
+            Toast.makeText(reqDarah.this, "Semua data diperlukan", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        DataModalDarahDarurat newData = new DataModalDarahDarurat(nama, golonganDarah, deskripsi);
+
+        Call<DataModalDarahDarurat> call = RetroServer.getRetrofitAPI().createDarahDarurat(newData);
+        call.enqueue(new Callback<DataModalDarahDarurat>() {
+            @Override
+            public void onResponse(Call<DataModalDarahDarurat> call, Response<DataModalDarahDarurat> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(reqDarah.this, "Data darah darurat berhasil ditambahkan", Toast.LENGTH_SHORT).show();
+                    clearFields();
+                } else {
+                    Toast.makeText(reqDarah.this, "Gagal menambahkan data darah darurat", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DataModalDarahDarurat> call, Throwable t) {
+                Toast.makeText(reqDarah.this, "Request failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("Error", "Request failed: " + t.getMessage());
+                Log.e("Error", "Request failed: " + Log.getStackTraceString(t));
+            }
+        });
+    }
+    private void clearFields() {
+        inputNama.setText("");
+        inputGoldar.setSelection(0);
+        inputDeskripsi.setText("");
     }
 }

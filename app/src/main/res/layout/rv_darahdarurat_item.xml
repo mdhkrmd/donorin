@@ -65,6 +65,13 @@
                     android:text="Nama RS / Orang"
                     android:layout_marginLeft="15dp"/>
 
+                <TextView
+                    android:id="@+id/txtStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Status"
+                    android:layout_marginLeft="15dp"/>
+
             </LinearLayout>
 
         </LinearLayout>
