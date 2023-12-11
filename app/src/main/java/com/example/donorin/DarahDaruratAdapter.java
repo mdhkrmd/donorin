@@ -73,11 +73,13 @@ public class DarahDaruratAdapter extends BaseAdapter {
                 // Dapatkan data yang ingin Anda kirim
                 String penerima = data.getNamaDarahDarurat();
                 String goldarPenerima = data.getGol_darahDarurat();
+                String idPenerima = data.getIdDarahDarurat();
 
                 // Buat Intent untuk berpindah ke daftarDarahDarurat.java
                 Intent intent = new Intent(view.getContext(), daftarDarahDarurat.class);
 
                 // Masukkan data ke Intent
+                intent.putExtra("idPenerima", idPenerima);
                 intent.putExtra("penerima", penerima);
                 intent.putExtra("goldarPenerima", goldarPenerima);
                 intent.putExtra("nik", nik);

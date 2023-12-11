@@ -98,7 +98,7 @@ public class daftardonor extends AppCompatActivity {
     private void postData(String nik, String nama, String darah, String alamat, String nohp, String lokasi, String jadwal) {
 
         // passing data from our text fields to our modal class.
-        DataModalDaftar modal = new DataModalDaftar(nik, nama, darah, alamat, nohp, lokasi, jadwal);
+        DataModalDaftar modal = new DataModalDaftar(nik, nama, darah, alamat, nohp, lokasi, jadwal, null);
 
         // calling a method to create a post and passing our modal class.
         Call<DataModalDaftar> call = RetroServer.getRetrofitAPI().createPostDaftar(modal);

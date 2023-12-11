@@ -15,7 +15,7 @@ import retrofit2.Response;
 
 public class daftarDarahDarurat extends AppCompatActivity {
 
-    EditText editPenerima, editDarahPenerima;
+    EditText editPenerima, editDarahPenerima, editIdPenerima;
     EditText editNik, editNama, editDarah, editAlamat, editNo;
     Button btnDaftar;
 
@@ -24,6 +24,7 @@ public class daftarDarahDarurat extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daftar_darah_darurat);
 
+        editIdPenerima = findViewById(R.id.editIdPenerima);
         editPenerima = findViewById(R.id.editPenerima);
         editDarahPenerima = findViewById(R.id.editDarahPenerima);
 
@@ -35,6 +36,7 @@ public class daftarDarahDarurat extends AppCompatActivity {
         btnDaftar = findViewById(R.id.btnDaftar);
 
         Intent intent = getIntent();
+        String idPenerima = intent.getStringExtra("idPenerima");
         String penerima = intent.getStringExtra("penerima");
         String goldarPenerima = intent.getStringExtra("goldarPenerima");
         String nik = intent.getStringExtra("nik");
@@ -43,6 +45,7 @@ public class daftarDarahDarurat extends AppCompatActivity {
         String alamat = intent.getStringExtra("alamat");
         String no = intent.getStringExtra("no");
 
+        editIdPenerima.setText(idPenerima);
         editPenerima.setText(penerima);
         editDarahPenerima.setText(goldarPenerima);
         editNik.setText(nik);
@@ -64,15 +67,16 @@ public class daftarDarahDarurat extends AppCompatActivity {
                             editDarah.getText().toString(),
                             editAlamat.getText().toString(),
                             editNo.getText().toString(),
-                            editPenerima.getText().toString());
+                            editPenerima.getText().toString(),
+                            editIdPenerima.getText().toString());
                 }
             }
         });
     }
-    private void postData(String nik, String nama, String darah, String alamat, String nohp, String lokasi) {
+    private void postData(String nik, String nama, String darah, String alamat, String nohp, String lokasi, String idPenerima) {
 
         // passing data from our text fields to our modal class.
-        DataModalDaftar modal = new DataModalDaftar(nik, nama, darah, alamat, nohp, lokasi, null);
+        DataModalDaftar modal = new DataModalDaftar(nik, nama, darah, alamat, nohp, lokasi, null, idPenerima);
 
         // calling a method to create a post and passing our modal class.
         Call<DataModalDaftar> call = RetroServer.getRetrofitAPI().createPostDaftarDonorDarurat(modal);

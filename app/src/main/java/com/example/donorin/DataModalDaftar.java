@@ -1,5 +1,7 @@
 package com.example.donorin;
 
+import com.google.gson.annotations.SerializedName;
+
 public class DataModalDaftar {
     private String nik;
     private String nama;
@@ -8,8 +10,10 @@ public class DataModalDaftar {
     private String nohp;
     private String lokasi;
     private String jadwal;
+    @SerializedName("id")
+    private String idPenerima;
 
-    public DataModalDaftar(String nik, String nama, String darah, String alamat, String nohp, String lokasi, String jadwal) {
+    public DataModalDaftar(String nik, String nama, String darah, String alamat, String nohp, String lokasi, String jadwal, String idPenerima) {
         this.nik = nik;
         this.nama = nama;
         this.darah = darah;
@@ -17,6 +21,7 @@ public class DataModalDaftar {
         this.nohp = nohp;
         this.lokasi = lokasi;
         this.jadwal = jadwal;
+        this.idPenerima = idPenerima;
     }
 
     public String getNik() {

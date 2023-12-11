@@ -148,6 +148,26 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/playfairdisplayregular"
+                    android:text="ID Penerima Darah" />
+
+                <EditText
+                    android:id="@+id/editIdPenerima"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="10dp"
+                    android:hint="ID..."
+                    android:background="@drawable/shape"
+                    android:textColorHint="#f7f7f7"
+                    android:textColor="#f7f7f7"
+                    android:textSize="15dp"
+                    android:enabled="false"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/playfairdisplayregular"
                     android:text="Penerima Darah" />
 
                 <EditText
@@ -158,6 +178,8 @@
                     android:paddingLeft="10dp"
                     android:background="@drawable/shape"
                     android:textColor="#f7f7f7"
+                    android:hint="Penerima..."
+                    android:textColorHint="#f7f7f7"
                     android:textSize="15dp"
                     android:enabled="false"/>
 
