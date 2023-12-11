@@ -110,13 +110,6 @@ public class daftardonor extends AppCompatActivity {
                 // this method is called when we get response from our api.
                 Toast.makeText(daftardonor.this, "Pendaftaran Berhasil", Toast.LENGTH_SHORT).show();
 
-                // on below line we are setting empty text
-                // to our both edit text.
-                EditNik.setText("");
-                EditNama.setText("");
-                EditDarah.setText("");
-                EditAlamat.setText("");
-                EditNo.setText("");
                 spinnerLokasi.setSelection(0);
                 EditJadwal.setSelection(0);
 
