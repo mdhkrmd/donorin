@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class profil extends AppCompatActivity {
 
-    TextView ambilNama, txtUpdate, txtLogout, ambilNik, ambilDarah, ambilAlamat, ambilLahir, ambilNo;
+    TextView ambilNama, txtUpdate, txtLogout, ambilNik, ambilDarah, ambilAlamat, ambilLahir, ambilNo, btnUtama2, btnRiwayat, btnRspmi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,9 @@ public class profil extends AppCompatActivity {
         ambilDarah = findViewById(R.id.ambilDarah);
         ambilAlamat = findViewById(R.id.ambilAlamat);
         ambilNo = findViewById(R.id.ambilNo);
+        btnUtama2 = findViewById(R.id.btnUtama2);
+        btnRiwayat = findViewById(R.id.btnRiwayat);
+        btnRspmi = findViewById(R.id.btnRspmi);
 
 
         txtUpdate = findViewById(R.id.txtUpdate);
@@ -39,6 +42,33 @@ public class profil extends AppCompatActivity {
                 intentPindah.putExtra("no", ambilNo.getText().toString());
 
 
+
+                startActivity(intentPindah);
+            }
+        });
+
+        btnUtama2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentPindah = new Intent(profil.this, utama.class);
+
+                startActivity(intentPindah);
+            }
+        });
+
+        btnRiwayat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentPindah = new Intent(profil.this, listRiwayat.class);
+
+                startActivity(intentPindah);
+            }
+        });
+
+        btnRspmi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentPindah = new Intent(profil.this, listRspmi.class);
 
                 startActivity(intentPindah);
             }
