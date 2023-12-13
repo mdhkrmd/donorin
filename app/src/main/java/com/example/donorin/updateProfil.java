@@ -114,6 +114,9 @@ public class updateProfil extends AppCompatActivity {
                     // Assuming there is a "status" field in the response indicating success
                     if (responseFromAPI.getStatus().equals("success")) {
                         Toast.makeText(updateProfil.this, "Data Berhasil Diubah", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(updateProfil.this, utama.class);
+                        startActivity(intent);
+                        finish(); //
                     } else {
                         Toast.makeText(updateProfil.this, "Gagal Mengubah", Toast.LENGTH_SHORT).show();
                     }

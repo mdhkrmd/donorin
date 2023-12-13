@@ -3,6 +3,7 @@ package com.example.donorin;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +22,8 @@ public class utama extends AppCompatActivity {
 
     TextView ambilUsername, ambilNik, ambilNama, ambilLahir, ambilDarah, ambilNo, ambilPoin, ambilAlamat;
     TextView btnDaftar, btnDarurat, reqDarah, btnUtama,  btnRiwayat, btnRspmi, btnPengaturan;
+
+    SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView.Adapter adapterTrendList;
     private RecyclerView recyclerViewTrends, rvArtikel;
     @Override
@@ -48,6 +51,8 @@ public class utama extends AppCompatActivity {
         btnRspmi = findViewById(R.id.btnRspmi);
         btnPengaturan = findViewById(R.id.btnPengaturan);
 
+        swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
+
         Intent intent = getIntent();
 
         ambilNama.setText(intent.getExtras().getString("nama"));
@@ -60,6 +65,17 @@ public class utama extends AppCompatActivity {
         ambilAlamat.setText(intent.getExtras().getString("alamat"));
 
         getArtikel();
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Panggil metode untuk memuat ulang data, misalnya fetchDataDarahDarurat()
+                getArtikel();
+                ambilNama.setText(intent.getExtras().getString("nama"));
+                ambilDarah.setText(intent.getExtras().getString("goldar"));
+                swipeRefreshLayout.setRefreshing(false); // Hentikan animasi refresh
+            }
+        });
 
 
         btnDaftar.setOnClickListener(new View.OnClickListener() {
@@ -156,4 +172,12 @@ public class utama extends AppCompatActivity {
         ArtikelAdapter artikelAdapter = new ArtikelAdapter(this, artikelDataList);
         rvArtikel.setAdapter(artikelAdapter);
     }
+    @Override
+    public void onBackPressed() {
+        // Tambahkan logika untuk menutup aplikasi atau melakukan aksi khusus
+        // Misalnya, keluar dari aplikasi saat tombol "back" ditekan setelah login
+        super.onBackPressed();
+        finishAffinity(); // Menutup semua aktivitas di dalam tumpukan
+    }
+
 }

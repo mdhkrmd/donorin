@@ -113,6 +113,11 @@ public class daftardonor extends AppCompatActivity {
                 spinnerLokasi.setSelection(0);
                 EditJadwal.setSelection(0);
 
+                // Setelah berhasil mendaftar, kembali ke halaman utama
+                Intent intent = new Intent(daftardonor.this, utama.class);
+                startActivity(intent);
+                finish(); //
+
                 // we are getting response from our body
                 // and passing it to our modal class.
                 DataModalDaftar responseFromAPI = response.body();

@@ -188,4 +188,12 @@ public class login extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        // Tambahkan logika untuk menutup aplikasi atau melakukan aksi khusus
+        // Misalnya, keluar dari aplikasi saat tombol "back" ditekan setelah login
+        super.onBackPressed();
+        finishAffinity(); // Menutup semua aktivitas di dalam tumpukan
+    }
 }

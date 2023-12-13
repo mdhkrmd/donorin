@@ -2,6 +2,7 @@ package com.example.donorin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -81,6 +82,10 @@ public class reqDarah extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Toast.makeText(reqDarah.this, "Data darah darurat berhasil ditambahkan", Toast.LENGTH_SHORT).show();
                     clearFields();
+                    // Setelah berhasil mendaftar, kembali ke halaman utama
+                    Intent intent = new Intent(reqDarah.this, utama.class);
+                    startActivity(intent);
+                    finish(); //
                 } else {
                     Toast.makeText(reqDarah.this, "Gagal menambahkan data darah darurat", Toast.LENGTH_SHORT).show();
                 }

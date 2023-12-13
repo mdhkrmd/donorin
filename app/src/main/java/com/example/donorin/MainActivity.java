@@ -135,6 +135,10 @@ public class MainActivity extends AppCompatActivity {
                 inputAlamat.setText("");
                 inputNo.setText("");
 
+                Intent intent = new Intent(MainActivity.this, login.class);
+                startActivity(intent);
+                finish(); //
+
                 // we are getting response from our body
                 // and passing it to our modal class.
                 DataModalRegister responseFromAPI = response.body();

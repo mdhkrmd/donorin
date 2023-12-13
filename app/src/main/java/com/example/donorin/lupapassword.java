@@ -88,6 +88,9 @@ public class lupapassword extends AppCompatActivity {
                         Toast.makeText(lupapassword.this, "Password Berhasil Diubah", Toast.LENGTH_SHORT).show();
                         inputUsername.setText("");
                         inputnew_password.setText("");
+                        Intent intent = new Intent(lupapassword.this, login.class);
+                        startActivity(intent);
+                        finish(); //
                     } else {
                         Toast.makeText(lupapassword.this, "Gagal Login / Username Tidak Terdaftar", Toast.LENGTH_SHORT).show();
                     }
