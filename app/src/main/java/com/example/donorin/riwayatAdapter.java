@@ -1,6 +1,7 @@
 package com.example.donorin;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,11 +32,33 @@ public class riwayatAdapter extends RecyclerView.Adapter<riwayatAdapter.riwayatV
     public void onBindViewHolder(@NonNull riwayatAdapter.riwayatViewHolder holder, int position) {
         riwayatData riwayatData = riwayatList.get(position);
 
+        String status = riwayatData.getStatusRiwayat();
+
+        if ("Proses".equals(status)) {
+            // Jika status adalah "proses", set warna kuning
+            holder.tvTitle.setBackgroundColor(Color.parseColor("#E3651D"));
+        } else if ("Antrian".equals(status)) {
+            // Jika status adalah "gagal", set warna merah
+            holder.tvTitle.setBackgroundColor(Color.parseColor("#E3651D"));
+        }
+        else if ("Gagal".equals(status)) {
+            // Jika status adalah "gagal", set warna merah
+            holder.tvTitle.setBackgroundColor(Color.parseColor("#750E21"));
+        }
+        else if ("Selesai".equals(status)) {
+            // Jika status adalah "gagal", set warna merah
+            holder.tvTitle.setBackgroundColor(Color.parseColor("#BED754"));
+        }else {
+            // Untuk status lain, biarkan warna default atau atur sesuai kebutuhan
+            holder.tvTitle.setTextColor(Color.BLACK);
+        }
+
         holder.txtRspmi.setText(riwayatData.getLokasiRiwayat());
-        holder.txtStatus.setText(riwayatData.getStatusRiwayat());
+        holder.txtStatus.setText(riwayatData.getJadwalRiwayat());
         holder.txtTanggal.setText(riwayatData.getTanggal_daftar());
-        holder.txtNama.setText(riwayatData.getJadwalRiwayat());
+//        holder.txtNama.setText(riwayatData.getJadwalRiwayat());
         holder.txtId.setText(riwayatData.getIdRiwayat());
+        holder.tvTitle.setText(riwayatData.getStatusRiwayat());
     }
 
     @Override
@@ -52,7 +75,7 @@ public class riwayatAdapter extends RecyclerView.Adapter<riwayatAdapter.riwayatV
             txtStatus = itemView.findViewById(R.id.txtStatus);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             txtTanggal = itemView.findViewById(R.id.txtTanggal);
-            txtNama = itemView.findViewById(R.id.txtNama);
+//            txtNama = itemView.findViewById(R.id.txtNama);
             txtId = itemView.findViewById(R.id.txtId);
         }
     }
