@@ -116,7 +116,7 @@
                         android:layout_height="24dp"
                         android:layout_gravity="center"
                         android:layout_margin="5dp"
-                        android:src="@drawable/bottom_btn2" />
+                        android:src="@drawable/riwayaticc" />
 
                     <TextView
                         android:id="@+id/btnRiwayat"
@@ -140,7 +140,7 @@
                         android:layout_height="24dp"
                         android:layout_gravity="center"
                         android:layout_margin="5dp"
-                        android:src="@drawable/bottom_btn3" />
+                        android:src="@drawable/rumahsakiticc" />
 
                     <TextView
                         android:id="@+id/btnRspmi"

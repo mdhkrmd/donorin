@@ -124,13 +124,13 @@
 
                 <ImageView
                     android:id="@+id/imageView11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="51dp"
+                    android:layout_height="52dp"
 
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/btn_5" />
+                    app:srcCompat="@drawable/ubahdataicc" />
 
                 <TextView
                     android:id="@+id/txtUpdate"
@@ -249,7 +249,7 @@
                         android:layout_height="24dp"
                         android:layout_gravity="center"
                         android:layout_margin="5dp"
-                        android:src="@drawable/bottom_btn2" />
+                        android:src="@drawable/riwayaticc" />
 
                     <TextView
                         android:id="@+id/btnRiwayat"
@@ -273,7 +273,7 @@
                         android:layout_height="24dp"
                         android:layout_gravity="center"
                         android:layout_margin="5dp"
-                        android:src="@drawable/bottom_btn3" />
+                        android:src="@drawable/rumahsakiticc" />
 
                     <TextView
                         android:id="@+id/btnRspmi"
