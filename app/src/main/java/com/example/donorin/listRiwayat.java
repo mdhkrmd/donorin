@@ -19,24 +19,44 @@ import retrofit2.Response;
 public class listRiwayat extends AppCompatActivity {
 
     RecyclerView rvRiwayat;
-    TextView btnRiwayat;
+    TextView btnRspmi, btnPengaturan, btnUtama;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_riwayat);
         rvRiwayat = findViewById(R.id.rvRiwayat);
-        btnRiwayat = findViewById(R.id.btnRiwayat);
+        btnRspmi = findViewById(R.id.btnRspmi);
+        btnPengaturan = findViewById(R.id.btnPengaturan);
+        btnUtama = findViewById(R.id.btnUtama);
 
         Intent intent = getIntent();
         String nik = intent.getExtras().getString("nik");
 
         getRiwayat(nik);
 
-        btnRiwayat.setOnClickListener(new View.OnClickListener() {
+        btnRspmi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentPindah = new Intent(listRiwayat.this, listRspmi.class);
+
+                startActivity(intentPindah);
+            }
+        });
+
+        btnPengaturan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentPindah = new Intent(listRiwayat.this, profil.class);
+
+                startActivity(intentPindah);
+            }
+        });
+
+        btnUtama.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentPindah = new Intent(listRiwayat.this, utama.class);
 
                 startActivity(intentPindah);
             }

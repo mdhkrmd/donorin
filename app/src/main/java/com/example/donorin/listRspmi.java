@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -15,14 +18,48 @@ import retrofit2.Response;
 public class listRspmi extends AppCompatActivity {
 
     RecyclerView rvRspmi;
+
+    TextView btnUtama1, btnRiwayat, btnPengaturan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_rspmi);
         rvRspmi = findViewById(R.id.rvRspmi);
+        btnUtama1 = findViewById(R.id.btnUtama1);
+        btnRiwayat = findViewById(R.id.btnRiwayat);
+        btnPengaturan = findViewById(R.id.btnPengaturan);
+
 
         getRspmi();
+
+        btnUtama1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentPindah = new Intent(listRspmi.this, utama.class);
+
+                startActivity(intentPindah);
+            }
+        });
+
+        btnRiwayat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentPindah = new Intent(listRspmi.this, listRiwayat.class);
+
+                startActivity(intentPindah);
+            }
+        });
+
+        btnPengaturan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentPindah = new Intent(listRspmi.this, profil.class);
+
+                startActivity(intentPindah);
+            }
+        });
     }
+
 
     private void getRspmi() {
         Call<List<RspmiData>> apiCall =  RetroServer.getRetrofitAPI().getData();
