@@ -175,7 +175,7 @@
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent"
-                                    app:srcCompat="@drawable/favorites" />
+                                    app:srcCompat="@drawable/donoricc" />
                             </androidx.constraintlayout.widget.ConstraintLayout>
 
                             <TextView
@@ -208,18 +208,7 @@
                                 android:layout_height="60dp"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_margin="16dp"
-                                android:background="@drawable/circle_background">
-
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent"
-                                    app:srcCompat="@drawable/message" />
-                            </androidx.constraintlayout.widget.ConstraintLayout>
+                                android:background="@drawable/darahdaruraticc"/>
 
                             <TextView
                                 android:id="@+id/btnDarurat"
@@ -251,7 +240,7 @@
                                 android:layout_height="60dp"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_margin="16dp"
-                                android:background="@drawable/circle_background">
+                                android:background="">
 
                                 <ImageView
                                     android:id="@+id/imageView6"
@@ -262,7 +251,7 @@
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent"
-                                    app:srcCompat="@drawable/social" />
+                                    app:srcCompat="@drawable/reqdarahicc" />
                             </androidx.constraintlayout.widget.ConstraintLayout>
 
                             <TextView
@@ -380,7 +369,7 @@
                         android:layout_height="24dp"
                         android:layout_gravity="center"
                         android:layout_margin="5dp"
-                        android:src="@drawable/bottom_btn2" />
+                        android:src="@drawable/riwayaticc" />
 
                     <TextView
                         android:id="@+id/btnRiwayat"
@@ -404,7 +393,7 @@
                         android:layout_height="24dp"
                         android:layout_gravity="center"
                         android:layout_margin="5dp"
-                        android:src="@drawable/bottom_btn3" />
+                        android:src="@drawable/rumahsakiticc" />
 
                     <TextView
                         android:id="@+id/btnRspmi"
