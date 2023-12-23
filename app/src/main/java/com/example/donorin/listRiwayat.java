@@ -1,10 +1,13 @@
 package com.example.donorin;
 
+import static com.example.donorin.utama.storeNik;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -21,6 +24,9 @@ public class listRiwayat extends AppCompatActivity {
     RecyclerView rvRiwayat;
     TextView btnRspmi, btnPengaturan, btnUtama;
 
+    private static final String PREFS_NAME = "YourPrefsFile";
+    private static final String KEY_NIK = "nik";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,9 +36,18 @@ public class listRiwayat extends AppCompatActivity {
         btnPengaturan = findViewById(R.id.btnPengaturan);
         btnUtama = findViewById(R.id.btnUtama);
 
-        Intent intent = getIntent();
-        String nik = intent.getExtras().getString("nik");
+        String nik = getStoredNik2();
 
+        // Jika nik belum tersimpan (nilai default), ambil dari intent
+        if (nik.equals("default_value")) {
+            Intent intent = getIntent();
+            if (intent != null && intent.hasExtra("nik")) {
+                nik = intent.getStringExtra("nik");
+
+                // Simpan nik ke SharedPreferences
+                storeNik(listRiwayat.this, nik);
+            }
+        }
         getRiwayat(nik);
 
         btnRspmi.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +76,11 @@ public class listRiwayat extends AppCompatActivity {
                 startActivity(intentPindah);
             }
         });
+    }
+
+    private String getStoredNik2() {
+        SharedPreferences preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        return preferences.getString(KEY_NIK, "default_value");
     }
 
     private void getRiwayat(String nik) {

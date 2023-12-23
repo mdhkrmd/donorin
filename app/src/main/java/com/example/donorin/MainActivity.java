@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         postDataBtn = findViewById(R.id.idBtnPost);
 
-        String[] tipeDarah = {"A+", "A-", "B+", "B-", "O+"};
+        String[] tipeDarah = {"A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"};
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, tipeDarah);
 

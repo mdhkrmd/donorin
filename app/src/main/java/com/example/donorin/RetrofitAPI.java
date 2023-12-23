@@ -20,6 +20,11 @@ public interface RetrofitAPI {
     @POST("login")
     Call<DataModalLogin> createPostLogin(@Body DataModalLogin dataModalLogin);
 
+    @GET("users")
+    Call<List<DataModalLogin>> getLoginData(
+            @Query("nik") String nik
+    );
+
     @POST("forgot")
     Call<DataModalForgot> createPostForgot(@Body DataModalForgot dataModalForgot);
 

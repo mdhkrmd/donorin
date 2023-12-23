@@ -59,8 +59,8 @@
                     android:background="@drawable/shape"
                     android:hint="NIK..."
                     android:paddingLeft="10dp"
-                    android:textColor="#f7f7f7"
-                    android:textColorHint="#f7f7f7"
+                    android:textColor="#B2A59B"
+                    android:textColorHint="#B2A59B"
                     android:textSize="15dp"
                     android:enabled="false"/>
 
@@ -79,7 +79,7 @@
                     android:background="@drawable/shape"
                     android:hint="Nama..."
                     android:paddingLeft="10dp"
-                    android:textColor="#f7f7f7"
+                    android:textColor="#B2A59B"
                     android:textColorHint="#f7f7f7"
                     android:textSize="15dp"
                     android:enabled="false"/>
@@ -99,7 +99,7 @@
                     android:background="@drawable/shape"
                     android:hint="Golongan Darah.."
                     android:paddingLeft="10dp"
-                    android:textColor="#f7f7f7"
+                    android:textColor="#B2A59B"
                     android:textColorHint="#f7f7f7"
                     android:textSize="15dp"
                     android:enabled="false"/>
@@ -119,7 +119,7 @@
                     android:background="@drawable/shape"
                     android:hint="Alamat..."
                     android:paddingLeft="10dp"
-                    android:textColor="#f7f7f7"
+                    android:textColor="#B2A59B"
                     android:textColorHint="#f7f7f7"
                     android:textSize="15dp"
                     android:enabled="false"/>
@@ -139,7 +139,7 @@
                     android:background="@drawable/shape"
                     android:hint="No..."
                     android:paddingLeft="10dp"
-                    android:textColor="#f7f7f7"
+                    android:textColor="#B2A59B"
                     android:textColorHint="#f7f7f7"
                     android:textSize="15dp"
                     android:enabled="false"/>

@@ -62,7 +62,7 @@ public class DarahDaruratAdapter extends BaseAdapter {
 
         // Mengatur nilai TextView sesuai data yang diterima
         idTextView.setText("ID: " + data.getIdDarahDarurat());
-        namaTextView.setText("Nama: " + data.getNamaDarahDarurat());
+        namaTextView.setText("Nama Penerima: " + data.getNamaDarahDarurat());
         golDarahTextView.setText("Golongan Darah: " + data.getGol_darahDarurat());
         statusTextView.setText("Status: " + data.getStatusDarahDarurat());
         tanggalTextView.setText("Tanggal: " + data.getTanggalDarahDarurat());

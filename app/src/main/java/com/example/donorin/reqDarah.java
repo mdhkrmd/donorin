@@ -33,7 +33,7 @@ public class reqDarah extends AppCompatActivity {
         inputGoldar = findViewById(R.id.inputGoldar);
         btnReq = findViewById(R.id.btnReq);
 
-        String[] tipeDarah = {"A+", "A-", "B+", "B-", "O+"};
+        String[] tipeDarah = {"A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"};
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, tipeDarah);
 

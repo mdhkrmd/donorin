@@ -149,7 +149,7 @@ public class login extends AppCompatActivity {
                         inputUsername.setText("");
                         inputPassword.setText("");
 
-//                        String kirimusername = responseFromAPI.getUsername();
+                        String kirimusername = responseFromAPI.getUsername();
                         String nik = responseFromAPI.getNik();
                         String nama = responseFromAPI.getNama();
                         String lahir = responseFromAPI.getLahir();
@@ -161,7 +161,7 @@ public class login extends AppCompatActivity {
                         // Assuming Utama.class is the target activity
                         Intent intent = new Intent(login.this, utama.class);
 
-                        intent.putExtra("username", inputUsername.getText().toString());
+                        intent.putExtra("username", kirimusername);
                         intent.putExtra("nik", nik);
                         intent.putExtra("nama", nama);
                         intent.putExtra("lahir", lahir);

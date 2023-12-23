@@ -92,6 +92,10 @@ public class daftarDarahDarurat extends AppCompatActivity {
                 // and passing it to our modal class.
                 DataModalDaftar responseFromAPI = response.body();
 
+                Intent intentPindah = new Intent(daftarDarahDarurat.this, utama.class);
+
+                startActivity(intentPindah);
+
                 // on below line we are getting our data from modal class and adding it to our string.
 //                String responseString = "Response Code : " + response.code();
 //                responseTV.setText(responseString);

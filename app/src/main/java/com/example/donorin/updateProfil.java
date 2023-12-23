@@ -46,7 +46,7 @@ public class updateProfil extends AppCompatActivity {
         ambilAlamat.setText(intent.getExtras().getString("alamat"));
         ambilNo.setText(intent.getExtras().getString("no"));
 
-        String[] tipeDarah = {"A+", "A-", "B+", "B-", "O+"};
+        String[] tipeDarah = {"A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"};
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, tipeDarah);
 
